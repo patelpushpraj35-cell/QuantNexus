@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapters – QuantNexus</title>
+  <meta name="description" content="Browse all 20 quantum computing chapters. Unlock chapters by completing quizzes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/ai-assistant.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="app-page">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon-sm">⚛️</span>
+      <span class="brand-name-sm">QuantNexus</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item" id="navDashboard">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="chapters.html" class="nav-item active" id="navChapters">
+        <span class="nav-icon">📚</span>
+        <span>Chapters</span>
+      </a>
+      <a href="circuit-lab.html" class="nav-item" id="navLab">
+        <span class="nav-icon">⚡</span>
+        <span>Circuit Lab</span>
+      </a>
+      <a href="simulation-lab.html" class="nav-item" id="navSimLab">
+        <span class="nav-icon">🧪</span>
+        <span>Simulation Lab</span>
+      </a>
+      <a href="coding-challenges.html" class="nav-item" id="navChallenges">
+        <span class="nav-icon">🏆</span>
+        <span>Challenges</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info" id="sidebarUser">
+        <div class="user-avatar" id="sidebarAvatar">?</div>
+        <div class="user-details">
+          <div class="user-name" id="sidebarName">Loading...</div>
+          <div class="user-role">Student</div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="handleLogout()" title="Logout">⏻</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="topbar">
+      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+      <div class="topbar-title">All Chapters</div>
+      <div class="topbar-right">
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-label">Dark</span>
+        </button>
+        <div class="badge-sih">SIH 26140</div>
+      </div>
+    </header>
+
+    <div class="page-body">
+      <div class="chapters-page-header">
+        <h2>Your Learning Path</h2>
+        <p>Complete each chapter sequentially. Pass the quiz to unlock the next chapter.</p>
+        <div class="overall-progress-bar-wrap">
+          <div class="overall-progress-bar" id="chaptersProgressBar" style="width:0%"></div>
+        </div>
+        <span class="progress-label" id="chaptersProgressLabel">0 / 20 chapters completed</span>
+      </div>
+
+      <div class="chapters-list" id="chaptersListContainer">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Video Lecture Modal for Instant In-Page Watch -->
+  <div class="modal-overlay hidden" id="videoModalOverlay" onclick="handleVideoModalBackdrop(event)">
+    <div class="video-modal-card">
+      <div class="vm-header">
+        <div class="vm-title-wrap">
+          <span class="vm-badge">🎬 Video Masterclass</span>
+          <h3 class="vm-title" id="vmChapterTitle">Chapter Video</h3>
+        </div>
+        <button class="vm-close-btn" onclick="closeVideoModal()" aria-label="Close modal">✕</button>
+      </div>
+      <div class="vm-player-box">
+        <iframe
+          id="vmIframe"
+          src=""
+          title="Chapter Video Player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="vm-footer">
+        <div class="vm-details">
+          <div class="vm-video-name" id="vmVideoName">Video Title</div>
+          <div class="vm-meta" id="vmVideoMeta">By Author • Duration</div>
+        </div>
+        <div class="vm-actions">
+          <a href="#" id="vmYtLink" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="font-size:0.8rem;padding:8px 14px;">YouTube ↗</a>
+          <button id="vmOpenChapterBtn" class="btn-primary" style="font-size:0.8rem;padding:8px 18px;" onclick="openChapterFromModal()">Start Interactive Chapter →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/chapters.js"></script>
+  <script src="js/ai-assistant.js"></script>
+</body>
+</html>

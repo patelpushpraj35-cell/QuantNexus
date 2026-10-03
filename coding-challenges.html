@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coding Challenges - QuantNexus</title>
+  <meta name="description" content="Practice quantum programming with 10 beginner-to-advanced Qiskit coding challenges. Write code, run circuits, and track your progress." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/challenges.css" />
+  <link rel="stylesheet" href="css/ai-assistant.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="app-page">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon-sm">&#9883;&#65039;</span>
+      <span class="brand-name-sm">QuantNexus</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item" id="navDashboard">
+        <span class="nav-icon">&#127968;</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="chapters.html" class="nav-item" id="navChapters">
+        <span class="nav-icon">&#128218;</span>
+        <span>Chapters</span>
+      </a>
+      <a href="circuit-lab.html" class="nav-item" id="navLab">
+        <span class="nav-icon">&#9889;</span>
+        <span>Circuit Lab</span>
+      </a>
+      <a href="simulation-lab.html" class="nav-item" id="navSimLab">
+        <span class="nav-icon">&#129514;</span>
+        <span>Simulation Lab</span>
+      </a>
+      <a href="coding-challenges.html" class="nav-item active" id="navChallenges">
+        <span class="nav-icon">&#127942;</span>
+        <span>Challenges</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info" id="sidebarUser">
+        <div class="user-avatar" id="sidebarAvatar">?</div>
+        <div class="user-details">
+          <div class="user-name" id="sidebarName">Loading...</div>
+          <div class="user-role">Student</div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="handleLogout()" title="Logout">&#9211;</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">&#9776;</button>
+      <div class="topbar-title">&#127942; Quantum Coding Challenges</div>
+      <div class="topbar-right">
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-label">Dark</span>
+        </button>
+        <div class="badge-sih">SIH 26140</div>
+      </div>
+    </header>
+
+    <!-- Challenge Layout: Split Panel -->
+    <div class="challenges-layout">
+
+      <!-- LEFT: Challenge List Panel -->
+      <aside class="ch-list-panel" id="challengeListPanel">
+        <div class="ch-list-header">
+          <div class="ch-list-title">10 Challenges</div>
+          <div class="ch-progress-summary">
+            <span id="chSolvedCount">0</span> / 10 Solved
+          </div>
+        </div>
+        <div class="ch-overall-bar-wrap">
+          <div class="ch-overall-bar" id="chOverallBar" style="width:0%"></div>
+        </div>
+        <div class="ch-list" id="challengeList">
+          <!-- Populated by JS -->
+        </div>
+      </aside>
+
+      <!-- RIGHT: Challenge Editor Panel -->
+      <div class="ch-editor-panel" id="challengeEditorPanel">
+
+        <!-- Challenge Header -->
+        <div class="ch-detail-header" id="chDetailHeader">
+          <div class="ch-detail-meta">
+            <span class="ch-id-badge" id="chIdBadge">#--</span>
+            <span class="ch-diff-badge diff-beginner" id="chDiffBadge">Beginner</span>
+            <span class="ch-status-badge status-not-started" id="chStatusBadge">Not Started</span>
+          </div>
+          <h1 class="ch-detail-title" id="chDetailTitle">Select a Challenge</h1>
+          <p class="ch-detail-desc" id="chDetailDesc">Choose a challenge from the left panel to begin coding quantum circuits.</p>
+        </div>
+
+        <!-- Tabs: Problem / Code / Output -->
+        <div class="ch-tabs">
+          <button class="ch-tab active" id="tabProblem" onclick="switchChallengeTab('problem')">&#128203; Problem</button>
+          <button class="ch-tab" id="tabCode" onclick="switchChallengeTab('code')">&#128187; Code Editor</button>
+          <button class="ch-tab" id="tabOutput" onclick="switchChallengeTab('output')">&#128202; Output</button>
+        </div>
+
+        <!-- Tab: Problem -->
+        <div class="ch-tab-content active" id="tabContentProblem">
+          <div class="ch-problem-body">
+            <div class="ch-welcome-state" id="chWelcomeState">
+              <div class="ch-welcome-icon">&#9883;&#65039;</div>
+              <h2>Ready to Code Quantum?</h2>
+              <p>Select a challenge from the left panel to view the problem statement, write Qiskit Python code, and get instant feedback on your circuit.</p>
+              <div class="ch-welcome-stats">
+                <div class="ch-welcome-stat"><span>&#128218;</span> 10 Challenges</div>
+                <div class="ch-welcome-stat"><span>&#9968;</span> 4 Difficulty Levels</div>
+                <div class="ch-welcome-stat"><span>&#9989;</span> Auto-Graded</div>
+              </div>
+            </div>
+            <div id="chProblemContent" style="display:none;">
+              <div class="ch-section">
+                <div class="ch-section-label">&#127919; Learning Objective</div>
+                <div class="ch-section-body" id="chObjective">-</div>
+              </div>
+              <div class="ch-section">
+                <div class="ch-section-label">&#128221; Problem Description</div>
+                <div class="ch-section-body" id="chDescription">-</div>
+              </div>
+              <div class="ch-section" id="chExpectedSection">
+                <div class="ch-section-label">&#10003; Expected Result</div>
+                <div class="ch-section-body ch-expected-box" id="chExpected"></div>
+              </div>
+              <div class="ch-section" id="chHintsSection">
+                <div class="ch-section-label">&#128161; Hints</div>
+                <div class="ch-hints-list" id="chHints"></div>
+              </div>
+              <div class="ch-start-btn-wrap">
+                <button class="btn-primary" id="btnGoToEditor" onclick="switchChallengeTab('code')">
+                  Start Coding &#9889;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Code Editor -->
+        <div class="ch-tab-content" id="tabContentCode">
+          <div class="ch-editor-wrap">
+            <div class="ch-editor-topbar">
+              <div class="ch-editor-lang">
+                <span class="ch-lang-dot"></span>
+                Python &middot; Qiskit
+              </div>
+              <div class="ch-editor-actions">
+                <button class="btn-editor-action" id="btnReset" onclick="resetCode()" title="Reset to starter code">&#8635; Reset</button>
+                <button class="btn-run" id="btnRun" onclick="runCode()">&#9654; Run Code</button>
+                <button class="btn-submit" id="btnSubmit" onclick="submitCode()">&#10003; Submit</button>
+              </div>
+            </div>
+            <!-- Line-numbered Code Editor -->
+            <div class="ch-editor-container" id="editorContainer">
+              <div class="ch-line-numbers" id="lineNumbers"></div>
+              <textarea class="ch-code-area" id="codeEditor" spellcheck="false"
+                placeholder="Select a challenge to start coding..."
+                oninput="syncEditor()" onscroll="syncScroll()" onkeydown="handleEditorKeydown(event)"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Output -->
+        <div class="ch-tab-content" id="tabContentOutput">
+          <div class="ch-output-wrap">
+            <div class="ch-output-topbar">
+              <div class="ch-output-label">Execution Output</div>
+              <button class="btn-editor-action" onclick="clearOutput()">&#10005; Clear</button>
+            </div>
+            <div class="ch-output-panel" id="outputPanel">
+              <div class="ch-output-placeholder">
+                <div class="ch-output-icon">&#9889;</div>
+                <div>Run your code to see output here.</div>
+                <div class="ch-output-hint">Click <strong>Run Code</strong> in the Code Editor tab to execute your circuit.</div>
+              </div>
+            </div>
+            <!-- Result Card -->
+            <div class="ch-result-card hidden" id="resultCard">
+              <div class="ch-result-icon" id="resultIcon"></div>
+              <div class="ch-result-content">
+                <div class="ch-result-title" id="resultTitle"></div>
+                <div class="ch-result-detail" id="resultDetail"></div>
+              </div>
+              <div class="ch-result-score" id="resultScore"></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end ch-editor-panel -->
+    </div><!-- end challenges-layout -->
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/backendAdapters.js"></script>
+  <script src="js/challenges.js"></script>
+  <script src="js/ai-assistant.js"></script>
+</body>
+</html>

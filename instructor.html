@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instructor Panel – QuantNexus</title>
+  <meta name="description" content="Instructor command center for student cohort tracking, curriculum management, circuit challenge assignments, and quiz analytics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="app-page">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon-sm">🎓</span>
+      <div style="display:flex;flex-direction:column;line-height:1.2;">
+        <span class="brand-name-sm">QuantNexus</span>
+        <span style="font-size:0.62rem;color:var(--primary-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;">Instructor Portal</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="javascript:void(0)" class="nav-item active" id="navInstRoster" onclick="switchInstTab('roster'); return false;">
+        <span class="nav-icon">👥</span>
+        <span>Student Roster</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-item" id="navInstCurriculum" onclick="switchInstTab('curriculum'); return false;">
+        <span class="nav-icon">📚</span>
+        <span>Curriculum & Unlocks</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-item" id="navInstChallenges" onclick="switchInstTab('challenges'); return false;">
+        <span class="nav-icon">⚡</span>
+        <span>Circuit Challenges</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-item" id="navInstAnalytics" onclick="switchInstTab('analytics'); return false;">
+        <span class="nav-icon">📊</span>
+        <span>Quiz Diagnostics</span>
+      </a>
+
+      <div style="height:1px;background:rgba(255,255,255,0.08);margin:14px 10px;"></div>
+
+      <a href="dashboard.html" class="nav-item" id="navInstStudentView" title="Preview Student Learning View">
+        <span class="nav-icon">👨‍🎓</span>
+        <span>View Student Portal ↗</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info" id="sidebarUser">
+        <div class="user-avatar" id="sidebarAvatar">P</div>
+        <div class="user-details">
+          <div class="user-name" id="sidebarName">Prof. Alok Sharma</div>
+          <div class="user-role">
+            <span class="role-badge role-instructor">Instructor</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="handleLogout()" title="Logout">⏻</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+      <div class="topbar-title">🎓 Instructor Command Center</div>
+      <div class="topbar-right">
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-label">Dark</span>
+        </button>
+        <span class="badge-sih">Cohort: SIH-Quantum-2026</span>
+        <button class="btn-secondary" onclick="exportCohortGrades()" title="Export student grades to JSON">📥 Export Grades</button>
+      </div>
+    </header>
+
+    <div class="page-body">
+
+      <!-- Cohort Overview Hero Banner -->
+      <div class="inst-hero-banner">
+        <div>
+          <h2>Quantum Curriculum & Cohort Analytics</h2>
+          <p>Monitor real-time student progression across 20 chapters, manage chapter unlocks, deploy quantum circuit assignments, and inspect quiz mastery.</p>
+        </div>
+        <div class="inst-hero-actions">
+          <button class="btn-primary" onclick="openAssignChallengeModal()">
+            <span>+ Deploy Circuit Challenge</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cohort Key Metrics Row -->
+      <div class="stats-row inst-stats-row">
+        <div class="stat-card">
+          <div class="stat-icon">👨‍🎓</div>
+          <div class="stat-info">
+            <div class="stat-value" id="kpiEnrolled">6</div>
+            <div class="stat-label">Enrolled Students</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📈</div>
+          <div class="stat-info">
+            <div class="stat-value" id="kpiAvgProgress">64%</div>
+            <div class="stat-label">Avg. Chapters Done</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-info">
+            <div class="stat-value" id="kpiAvgQuiz">85.7%</div>
+            <div class="stat-label">Class Quiz Average</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-info">
+            <div class="stat-value" id="kpiCircuitSubmissions">18</div>
+            <div class="stat-label">Verified Circuits</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructor Navigation Tabs -->
+      <div class="inst-tabs-bar">
+        <button class="inst-tab-btn active" id="tabRoster" onclick="switchInstTab('roster')">
+          <span>👥 Student Cohort Roster</span>
+        </button>
+        <button class="inst-tab-btn" id="tabCurriculum" onclick="switchInstTab('curriculum')">
+          <span>📚 Curriculum & Chapters</span>
+        </button>
+        <button class="inst-tab-btn" id="tabChallenges" onclick="switchInstTab('challenges')">
+          <span>⚡ Circuit Challenges</span>
+        </button>
+        <button class="inst-tab-btn" id="tabAnalytics" onclick="switchInstTab('analytics')">
+          <span>📊 Quiz Diagnostics</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: Student Cohort Roster -->
+      <section class="inst-tab-panel" id="panelRoster">
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <div>
+              <h3>Student Cohort Progression</h3>
+              <p class="panel-subtext">Detailed chapter completion, quiz performance, and manual unlock controls.</p>
+            </div>
+            <div class="table-filter-bar">
+              <input type="text" id="studentSearchInput" class="search-input" placeholder="Search by student name or email..." oninput="filterStudentsTable()" />
+              <select id="studentStatusFilter" class="control-select" onchange="filterStudentsTable()">
+                <option value="all">All Statuses</option>
+                <option value="Active">Active</option>
+                <option value="Completed">Course Completed</option>
+                <option value="Needs Help">Needs Help (&lt;75%)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="counts-table-wrapper">
+            <table class="sim-table inst-table" id="studentsTable">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Student Name</th>
+                  <th>Email</th>
+                  <th>Chapters Done</th>
+                  <th>Current Chapter</th>
+                  <th>Avg. Quiz</th>
+                  <th>Status</th>
+                  <th>Last Active</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="studentsTableBody">
+                <!-- Injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: Curriculum & Chapters -->
+      <section class="inst-tab-panel hidden" id="panelCurriculum">
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <div>
+              <h3>20 Chapters Curriculum Management</h3>
+              <p class="panel-subtext">Review dataset chapters, pass criteria, and student completion statistics.</p>
+            </div>
+            <div class="global-threshold-box">
+              <label for="globalPassingThreshold">Global Quiz Pass Threshold:</label>
+              <select id="globalPassingThreshold" class="control-select" onchange="updatePassingThreshold(this.value)">
+                <option value="50">50% (Lenient)</option>
+                <option value="60" selected>60% (Default SIH Standard)</option>
+                <option value="70">70% (Rigorous)</option>
+                <option value="80">80% (Mastery)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="curriculum-grid" id="curriculumChaptersGrid">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: Circuit Challenges -->
+      <section class="inst-tab-panel hidden" id="panelChallenges">
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <div>
+              <h3>Quantum Circuit Challenge Assigner</h3>
+              <p class="panel-subtext">Assign graphical and code-based circuit exercises to test practical student quantum intuition.</p>
+            </div>
+            <button class="btn-primary" onclick="openAssignChallengeModal()">+ New Challenge</button>
+          </div>
+
+          <div class="challenges-list-grid" id="challengesListGrid">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: Quiz Diagnostics -->
+      <section class="inst-tab-panel hidden" id="panelAnalytics">
+        <div class="analytics-layout-grid">
+          <div class="panel-card">
+            <h3>📊 Chapter Quiz Pass Rate Distribution</h3>
+            <p class="panel-subtext">Percentage of students passing on their 1st vs 2nd attempt.</p>
+            <div class="quiz-bars-chart" id="quizDiagnosticsChart">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <h3>⚠️ Concept Difficulties & High-Miss Questions</h3>
+            <p class="panel-subtext">Topics where students experienced repeated quiz retries.</p>
+            <div class="difficult-topics-list" id="difficultTopicsList">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Student Progress Detail Modal -->
+  <div class="modal-overlay hidden" id="studentDetailModal">
+    <div class="sim-modal-content inst-modal-lg">
+      <div class="sim-modal-header">
+        <h3 id="modalStudentName">Student Detailed Progress</h3>
+        <button class="btn-close-modal" onclick="closeStudentModal()">✕</button>
+      </div>
+      <div class="sim-modal-body">
+        <div class="student-profile-strip" id="modalStudentProfile">
+          <!-- Injected by JS -->
+        </div>
+        <h4 style="margin: 14px 0 8px;">20-Chapter Mastery Matrix</h4>
+        <div class="chapter-matrix-scroll">
+          <table class="sim-table">
+            <thead>
+              <tr>
+                <th>Chapter</th>
+                <th>Status</th>
+                <th>Best Score</th>
+                <th>Attempts</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="modalChapterMatrixBody">
+              <!-- Injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="sim-modal-footer">
+        <button class="btn-secondary" onclick="closeStudentModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deploy Challenge Modal -->
+  <div class="modal-overlay hidden" id="deployChallengeModal">
+    <div class="sim-modal-content">
+      <div class="sim-modal-header">
+        <h3>⚡ Deploy Quantum Circuit Challenge</h3>
+        <button class="btn-close-modal" onclick="closeDeployModal()">✕</button>
+      </div>
+      <form class="sim-modal-body" onsubmit="handleCreateChallenge(event)">
+        <div class="form-group">
+          <label for="chTitle">Challenge Title</label>
+          <input type="text" id="chTitle" required placeholder="e.g. Synthesize Bell State |Ψ⁻⟩" />
+        </div>
+        <div class="form-group">
+          <label for="chTarget">Target Quantum State / Gate</label>
+          <input type="text" id="chTarget" required placeholder="e.g. (|01⟩ - |10⟩) / √2" />
+        </div>
+        <div class="form-group">
+          <label for="chQubits">Qubit Count</label>
+          <select id="chQubits" class="control-select">
+            <option value="1">1 Qubit</option>
+            <option value="2" selected>2 Qubits</option>
+            <option value="3">3 Qubits</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="chBackend">Required Simulation Backend</label>
+          <select id="chBackend" class="control-select">
+            <option value="qiskit_aer">Qiskit Aer (IBM)</option>
+            <option value="pennylane">PennyLane (Xanadu)</option>
+            <option value="cirq">Google Cirq</option>
+            <option value="any" selected>Any Backend</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="chDesc">Instructions & Hints</label>
+          <textarea id="chDesc" rows="3" class="form-textarea" placeholder="Describe the circuit goal for the students..."></textarea>
+        </div>
+        <div class="sim-modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeDeployModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Deploy to Cohort 🚀</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/quizData.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/instructor.js"></script>
+</body>
+</html>

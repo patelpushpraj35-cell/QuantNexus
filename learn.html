@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn – QuantNexus</title>
+  <meta name="description" content="Learn quantum computing with interactive chapters, explanations, and examples." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/ai-assistant.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="app-page">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon-sm">⚛️</span>
+      <span class="brand-name-sm">QuantNexus</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item" id="navDashboard">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="chapters.html" class="nav-item active" id="navChapters">
+        <span class="nav-icon">📚</span>
+        <span>Chapters</span>
+      </a>
+      <a href="circuit-lab.html" class="nav-item" id="navLab">
+        <span class="nav-icon">⚡</span>
+        <span>Circuit Lab</span>
+      </a>
+      <a href="simulation-lab.html" class="nav-item" id="navSimLab">
+        <span class="nav-icon">🧪</span>
+        <span>Simulation Lab</span>
+      </a>
+      <a href="coding-challenges.html" class="nav-item" id="navChallenges">
+        <span class="nav-icon">🏆</span>
+        <span>Challenges</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info" id="sidebarUser">
+        <div class="user-avatar" id="sidebarAvatar">?</div>
+        <div class="user-details">
+          <div class="user-name" id="sidebarName">Loading...</div>
+          <div class="user-role">Student</div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="handleLogout()" title="Logout">⏻</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+      <div class="topbar-title" id="learnTopbarTitle">Chapter</div>
+      <div class="topbar-right">
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-label">Dark</span>
+        </button>
+        <a href="chapters.html" class="btn-back">← All Chapters</a>
+      </div>
+    </header>
+
+    <!-- Chapter Progress Bar -->
+    <div class="chapter-progress-strip">
+      <div class="chapter-progress-fill" id="chapterProgressFill" style="width:0%"></div>
+    </div>
+
+    <div class="page-body" id="learnPageBody">
+
+      <!-- Chapter Header -->
+      <div class="chapter-hero" id="chapterHero">
+        <div class="chapter-meta-row">
+          <span class="chapter-num" id="chapterNumBadge">Ch. 1</span>
+          <span class="difficulty-badge" id="difficultyBadge">Beginner</span>
+          <button id="chapterWatchBtn" onclick="scrollToVideo()" class="btn-video-shortcut" title="Watch Chapter Video Masterclass">🎬 Watch Video</button>
+          <a id="chapterLabBtn" href="circuit-lab.html" class="btn-lab-shortcut" title="Experiment with quantum circuits for this chapter">⚡ Open in Circuit Lab</a>
+        </div>
+        <h1 class="chapter-title" id="chapterTitle">Loading...</h1>
+        <p class="chapter-overview" id="chapterOverview"></p>
+
+        <div class="objectives-card" id="objectivesCard">
+          <h4>🎯 Learning Objectives</h4>
+          <ul id="objectivesList"></ul>
+        </div>
+      </div>
+
+      <!-- Chapter Video Masterclass (Playable embedded YouTube video) -->
+      <section class="chapter-video-card" id="chapterVideoCard">
+        <div class="cv-header">
+          <div class="cv-header-left">
+            <span class="cv-badge">🎬 Video Masterclass</span>
+            <span class="cv-author" id="videoAuthor">Video Creator</span>
+            <span class="cv-duration" id="videoDuration">--:--</span>
+          </div>
+          <div class="cv-header-right">
+            <button class="btn-cv-toggle" id="btnToggleVideo" onclick="toggleVideoCollapse()" title="Collapse or Expand Video Player">
+              <span id="videoToggleIcon">▲</span> <span id="videoToggleText">Hide Video</span>
+            </button>
+            <a href="#" id="videoExternalLink" target="_blank" rel="noopener noreferrer" class="btn-cv-link" title="Open video directly on YouTube">
+              YouTube ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="cv-player-wrapper" id="videoPlayerWrapper">
+          <div class="cv-iframe-container">
+            <iframe
+              id="chapterVideoIframe"
+              src=""
+              title="Chapter Video Masterclass"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="cv-info-bar">
+            <div class="cv-info-text">
+              <h3 class="cv-title" id="videoTitle">Video Title</h3>
+              <p class="cv-desc" id="videoDesc">Video explanation description...</p>
+            </div>
+            <button class="btn-cv-continue" onclick="scrollToSectionContent()">
+              Explore Interactive Lessons ↓
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Tabs -->
+      <div class="section-nav" id="sectionNav">
+        <!-- Section tab buttons injected by JS -->
+      </div>
+
+      <!-- Section Content -->
+      <div class="section-content" id="sectionContent">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Section navigation buttons -->
+      <div class="section-footer">
+        <button class="btn-secondary" id="prevSectionBtn" onclick="navigateSection(-1)" disabled>← Previous</button>
+        <div class="section-dots" id="sectionDots"></div>
+        <button class="btn-primary" id="nextSectionBtn" onclick="navigateSection(1)">Next →</button>
+      </div>
+
+      <!-- Takeaways (shown at end) -->
+      <div class="takeaways-card hidden" id="takeawaysCard">
+        <h3>🌟 Chapter Takeaways</h3>
+        <ul id="takeawaysList"></ul>
+        <button class="btn-primary btn-cta" onclick="goToQuiz()">Take the Quiz ⚡</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Quiz Modal -->
+  <div class="modal-overlay hidden" id="quizOverlay">
+    <div class="quiz-modal" id="quizModal">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+
+  <!-- Quiz Result Modal -->
+  <div class="modal-overlay hidden" id="resultOverlay">
+    <div class="result-modal" id="resultModal">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/quizData.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/learn.js"></script>
+  <script src="js/ai-assistant.js"></script>
+</body>
+</html>

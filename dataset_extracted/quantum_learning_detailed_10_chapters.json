@@ -1,0 +1,938 @@
+{
+  "dataset_name": "SIH 26140 Detailed Online Learning Curriculum Dataset",
+  "version": "2.0",
+  "source": "SIH26140.pdf",
+  "note": "Detailed instructional content organized from the official problem statement. The exact chapter structure is a practical curriculum design; the source requirements and named deliverables are preserved.",
+  "chapters": [
+    {
+      "chapter_id": 1,
+      "title": "Introduction to Quantum Computing",
+      "difficulty": "Beginner",
+      "overview": "Learn what quantum computing is, how it differs from classical computing, and why concepts such as qubits, superposition and entanglement need interactive learning.",
+      "learning_objectives": [
+        "Understand the purpose of quantum computing.",
+        "Know the difference between a classical bit and a qubit.",
+        "Recognize the core terms used throughout the platform."
+      ],
+      "sections": [
+        {
+          "section_id": "1.1",
+          "title": "What is Quantum Computing?",
+          "explanation": "Quantum computing is a way of processing information using quantum systems. This course introduces the ideas needed to understand quantum circuits and algorithms through simple explanations and interactive examples.",
+          "points": [
+            "Meaning of quantum computing",
+            "Quantum information",
+            "Why quantum computing is different",
+            "Where quantum computing is useful"
+          ]
+        },
+        {
+          "section_id": "1.2",
+          "title": "Classical vs Quantum Computing",
+          "explanation": "Classical computers use bits with values 0 or 1. Quantum computing uses qubits and quantum operations, allowing different ways of representing and manipulating information.",
+          "points": [
+            "Classical bit",
+            "Quantum bit",
+            "Classical logic gates",
+            "Quantum gates",
+            "Conceptual comparison"
+          ]
+        },
+        {
+          "section_id": "1.3",
+          "title": "Why Learn Quantum Computing Interactively?",
+          "explanation": "Quantum concepts can be abstract when learned only from text. An interactive platform lets learners build circuits, execute simulations and immediately inspect visual results.",
+          "points": [
+            "Theory",
+            "Interactive circuit",
+            "Simulation",
+            "Visualization",
+            "Practice"
+          ]
+        },
+        {
+          "section_id": "1.4",
+          "title": "Quantum Computing Vocabulary",
+          "explanation": "Build a basic vocabulary before working in the lab.",
+          "points": [
+            "Qubit",
+            "Gate",
+            "Circuit",
+            "Measurement",
+            "State",
+            "Superposition",
+            "Entanglement",
+            "Algorithm"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Understand the purpose of quantum computing.",
+        "Know the difference between a classical bit and a qubit.",
+        "Recognize the core terms used throughout the platform."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    },
+    {
+      "chapter_id": 2,
+      "title": "Qubits and Quantum States",
+      "difficulty": "Beginner",
+      "overview": "Understand the qubit, computational basis states, state representation and the basic idea of a statevector.",
+      "learning_objectives": [
+        "Identify |0> and |1>.",
+        "Understand the purpose of a statevector display.",
+        "Connect circuit operations with changes in quantum state."
+      ],
+      "sections": [
+        {
+          "section_id": "2.1",
+          "title": "What is a Qubit?",
+          "explanation": "A qubit is the basic unit used to represent quantum information. It can be prepared, transformed with quantum gates and measured.",
+          "points": [
+            "Qubit definition",
+            "Single-qubit circuit",
+            "Qubit as quantum information"
+          ]
+        },
+        {
+          "section_id": "2.2",
+          "title": "Computational Basis States",
+          "explanation": "The two standard computational basis states for one qubit are written as |0> and |1>.",
+          "points": [
+            "|0>",
+            "|1>",
+            "Basis-state notation",
+            "Reading basis states"
+          ]
+        },
+        {
+          "section_id": "2.3",
+          "title": "Quantum State Representation",
+          "explanation": "A quantum state can be represented mathematically and displayed by a simulator. For the learning platform, learners should be able to inspect the state produced by a circuit.",
+          "points": [
+            "State representation",
+            "Amplitudes",
+            "Statevector concept",
+            "Reading state information"
+          ]
+        },
+        {
+          "section_id": "2.4",
+          "title": "State Changes",
+          "explanation": "Gates change the state of a qubit. Learners can compare the state before and after applying a gate.",
+          "points": [
+            "Initial state",
+            "Gate operation",
+            "Resulting state",
+            "State comparison"
+          ]
+        },
+        {
+          "section_id": "2.5",
+          "title": "Interactive State Explorer",
+          "explanation": "Use the circuit lab to prepare a state, apply a gate and inspect the resulting state information.",
+          "points": [
+            "Prepare |0>",
+            "Apply H/X/Z",
+            "Run",
+            "Inspect result"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Identify |0> and |1>.",
+        "Understand the purpose of a statevector display.",
+        "Connect circuit operations with changes in quantum state."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    },
+    {
+      "chapter_id": 3,
+      "title": "Superposition and Measurement",
+      "difficulty": "Beginner",
+      "overview": "Learn superposition using simple circuits and understand how measurement and repeated shots produce observable outcome distributions.",
+      "learning_objectives": [
+        "Explain the introductory idea of superposition.",
+        "Understand why repeated shots are useful.",
+        "Read a measurement histogram."
+      ],
+      "sections": [
+        {
+          "section_id": "3.1",
+          "title": "Concept of Superposition",
+          "explanation": "Superposition is a fundamental quantum concept. The platform introduces it through a visual circuit and simulation rather than only mathematical notation.",
+          "points": [
+            "Meaning of superposition",
+            "Single-qubit example",
+            "State before measurement"
+          ]
+        },
+        {
+          "section_id": "3.2",
+          "title": "Hadamard Gate",
+          "explanation": "The Hadamard gate is a standard example for demonstrating an equal superposition from a computational basis input such as |0>.",
+          "points": [
+            "H gate",
+            "Apply H to |0>",
+            "Expected probability idea",
+            "Interactive example"
+          ]
+        },
+        {
+          "section_id": "3.3",
+          "title": "Measurement",
+          "explanation": "Measurement produces a classical outcome from a quantum state.",
+          "points": [
+            "Measurement operation",
+            "Classical outcome",
+            "Measurement in a circuit"
+          ]
+        },
+        {
+          "section_id": "3.4",
+          "title": "Shots and Probability",
+          "explanation": "Running a circuit repeatedly produces counts that can be converted into empirical probabilities.",
+          "points": [
+            "Shots",
+            "Counts",
+            "Probability",
+            "Repeated execution"
+          ]
+        },
+        {
+          "section_id": "3.5",
+          "title": "Measurement Histogram",
+          "explanation": "A histogram provides a visual view of measurement outcomes and their frequencies/probabilities.",
+          "points": [
+            "Bars",
+            "Outcome labels",
+            "Counts",
+            "Probability interpretation"
+          ]
+        },
+        {
+          "section_id": "3.6",
+          "title": "Understanding Results",
+          "explanation": "Compare the expected behavior of a simple circuit with the simulated measurement distribution.",
+          "points": [
+            "Expected vs observed",
+            "Sampling variation",
+            "Result interpretation"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Explain the introductory idea of superposition.",
+        "Understand why repeated shots are useful.",
+        "Read a measurement histogram."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    },
+    {
+      "chapter_id": 4,
+      "title": "Quantum Gates and Circuits",
+      "difficulty": "Beginner",
+      "overview": "Learn common quantum gates and how gates are arranged into single- and multi-qubit circuits.",
+      "learning_objectives": [
+        "Recognize common gates.",
+        "Read a circuit diagram.",
+        "Build a basic multi-qubit circuit."
+      ],
+      "sections": [
+        {
+          "section_id": "4.1",
+          "title": "Quantum Gates",
+          "explanation": "Quantum gates are operations applied to qubits. They form the basic building blocks of a quantum circuit.",
+          "points": [
+            "Gate concept",
+            "Gate sequence",
+            "Gate placement"
+          ]
+        },
+        {
+          "section_id": "4.2",
+          "title": "H Gate",
+          "explanation": "Use H to explore superposition behavior in the lab.",
+          "points": [
+            "H operation",
+            "Single-qubit circuit",
+            "Simulation"
+          ]
+        },
+        {
+          "section_id": "4.3",
+          "title": "X, Y and Z Gates",
+          "explanation": "Explore common single-qubit gates and compare their effects.",
+          "points": [
+            "X gate",
+            "Y gate",
+            "Z gate",
+            "State changes"
+          ]
+        },
+        {
+          "section_id": "4.4",
+          "title": "S and T Gates",
+          "explanation": "Introduce S and T as additional single-qubit gates and show their role in circuit construction.",
+          "points": [
+            "S gate",
+            "T gate",
+            "Phase concept at introductory level"
+          ]
+        },
+        {
+          "section_id": "4.5",
+          "title": "CNOT Gate",
+          "explanation": "CNOT is a controlled two-qubit operation. One qubit acts as control and another as target.",
+          "points": [
+            "Control qubit",
+            "Target qubit",
+            "CNOT placement",
+            "Two-qubit circuit"
+          ]
+        },
+        {
+          "section_id": "4.6",
+          "title": "SWAP Gate",
+          "explanation": "SWAP exchanges the states of two qubits.",
+          "points": [
+            "Two-qubit operation",
+            "SWAP placement",
+            "Circuit example"
+          ]
+        },
+        {
+          "section_id": "4.7",
+          "title": "Circuit Diagram",
+          "explanation": "Read qubit wires, gate positions and operation order from a circuit diagram.",
+          "points": [
+            "Qubit wires",
+            "Gate symbols",
+            "Operation order",
+            "Measurement"
+          ]
+        },
+        {
+          "section_id": "4.8",
+          "title": "Multi-Qubit Circuits",
+          "explanation": "Combine multiple gates and qubits into a complete circuit.",
+          "points": [
+            "Two-qubit circuit",
+            "Gate sequence",
+            "Measurement"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Recognize common gates.",
+        "Read a circuit diagram.",
+        "Build a basic multi-qubit circuit."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    },
+    {
+      "chapter_id": 5,
+      "title": "Entanglement",
+      "difficulty": "Intermediate",
+      "overview": "Learn the introductory concept of entanglement and construct a simple Bell-state circuit.",
+      "learning_objectives": [
+        "Explain entanglement at an introductory level.",
+        "Build a Bell-state circuit.",
+        "Interpret its measurement pattern."
+      ],
+      "sections": [
+        {
+          "section_id": "5.1",
+          "title": "What is Entanglement?",
+          "explanation": "Entanglement describes quantum correlations between quantum systems. It is introduced through small circuits and measurable outcomes.",
+          "points": [
+            "Entanglement concept",
+            "Two-qubit systems",
+            "Correlation"
+          ]
+        },
+        {
+          "section_id": "5.2",
+          "title": "Bell State",
+          "explanation": "A Bell-state circuit is a standard learning example that can be built with a Hadamard gate followed by a CNOT.",
+          "points": [
+            "Bell state",
+            "Two qubits",
+            "H + CNOT"
+          ]
+        },
+        {
+          "section_id": "5.3",
+          "title": "Building the Circuit",
+          "explanation": "Construct the circuit step by step in the visual editor.",
+          "points": [
+            "Place H",
+            "Place CNOT",
+            "Add measurement",
+            "Run"
+          ]
+        },
+        {
+          "section_id": "5.4",
+          "title": "Correlated Results",
+          "explanation": "Inspect the measurement results and understand the correlation shown by the simple Bell-state example.",
+          "points": [
+            "Measurement outcomes",
+            "Correlation",
+            "Histogram"
+          ]
+        },
+        {
+          "section_id": "5.5",
+          "title": "Entanglement Lab Exercise",
+          "explanation": "Learners build the circuit themselves, run it and explain the result.",
+          "points": [
+            "Build",
+            "Run",
+            "Observe",
+            "Explain"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Explain entanglement at an introductory level.",
+        "Build a Bell-state circuit.",
+        "Interpret its measurement pattern."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    },
+    {
+      "chapter_id": 6,
+      "title": "Quantum Circuit Design and Programming",
+      "difficulty": "Intermediate",
+      "overview": "Learn how to construct circuits visually and with code, validate them and execute them in the quantum lab.",
+      "learning_objectives": [
+        "Build circuits visually.",
+        "Write basic quantum circuit code.",
+        "Validate a circuit before running it."
+      ],
+      "sections": [
+        {
+          "section_id": "6.1",
+          "title": "Drag-and-Drop Circuit Builder",
+          "explanation": "Use a gate palette and place operations on qubit wires.",
+          "points": [
+            "Gate palette",
+            "Qubit grid",
+            "Drag and drop",
+            "Delete"
+          ]
+        },
+        {
+          "section_id": "6.2",
+          "title": "Circuit Editing",
+          "explanation": "Modify circuits before execution.",
+          "points": [
+            "Undo",
+            "Redo",
+            "Clear",
+            "Reset",
+            "Move/delete gate"
+          ]
+        },
+        {
+          "section_id": "6.3",
+          "title": "Multi-Qubit Gate Placement",
+          "explanation": "Learn how controlled and two-qubit gates occupy multiple qubit wires.",
+          "points": [
+            "CNOT",
+            "SWAP",
+            "Control/target",
+            "Validation"
+          ]
+        },
+        {
+          "section_id": "6.4",
+          "title": "Code-Based Circuit Creation",
+          "explanation": "Create a quantum circuit using supported quantum Python code.",
+          "points": [
+            "QuantumCircuit",
+            "Gate calls",
+            "Measurement",
+            "Execution"
+          ]
+        },
+        {
+          "section_id": "6.5",
+          "title": "Code Editor",
+          "explanation": "Use a code editor with readable formatting and syntax highlighting.",
+          "points": [
+            "Editor",
+            "Syntax highlighting",
+            "Run",
+            "Reset"
+          ]
+        },
+        {
+          "section_id": "6.6",
+          "title": "Circuit Validation",
+          "explanation": "Check for invalid operations before simulation.",
+          "points": [
+            "Invalid gate placement",
+            "Missing measurement",
+            "Qubit index validation"
+          ]
+        },
+        {
+          "section_id": "6.7",
+          "title": "Visual and Code Views",
+          "explanation": "Understand that the same circuit can be represented graphically and programmatically.",
+          "points": [
+            "Visual representation",
+            "Code representation",
+            "Comparison"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Build circuits visually.",
+        "Write basic quantum circuit code.",
+        "Validate a circuit before running it."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    },
+    {
+      "chapter_id": 7,
+      "title": "Quantum Simulation and Frameworks",
+      "difficulty": "Intermediate",
+      "overview": "Understand how software simulators execute quantum circuits and how the platform can expose multiple frameworks/backends.",
+      "learning_objectives": [
+        "Understand why simulation is useful.",
+        "Recognize the named quantum frameworks/backends.",
+        "Read basic simulation output."
+      ],
+      "sections": [
+        {
+          "section_id": "7.1",
+          "title": "What is Quantum Simulation?",
+          "explanation": "A simulator runs a software model of a quantum circuit so learners can experiment without requiring direct access to physical quantum hardware.",
+          "points": [
+            "Simulation",
+            "Circuit execution",
+            "Results"
+          ]
+        },
+        {
+          "section_id": "7.2",
+          "title": "Qiskit Aer",
+          "explanation": "Introduce Qiskit Aer as a simulation backend named in the SIH problem statement.",
+          "points": [
+            "Backend selection",
+            "Shots",
+            "Counts",
+            "Simulation result"
+          ]
+        },
+        {
+          "section_id": "7.3",
+          "title": "PennyLane",
+          "explanation": "Introduce PennyLane as another framework named in the SIH problem statement and explain its role as an execution/simulation framework.",
+          "points": [
+            "Framework concept",
+            "Circuit execution",
+            "Result handling"
+          ]
+        },
+        {
+          "section_id": "7.4",
+          "title": "Cirq",
+          "explanation": "Introduce Cirq as another named quantum framework.",
+          "points": [
+            "Framework concept",
+            "Circuit representation",
+            "Simulation"
+          ]
+        },
+        {
+          "section_id": "7.5",
+          "title": "Qbraid",
+          "explanation": "Introduce Qbraid as a named platform/integration in the problem statement.",
+          "points": [
+            "Platform/integration concept",
+            "Backend access",
+            "Result workflow"
+          ]
+        },
+        {
+          "section_id": "7.6",
+          "title": "Backend Selection",
+          "explanation": "Allow learners to select an available backend and execute the same learning circuit where supported.",
+          "points": [
+            "Backend dropdown",
+            "Execution",
+            "Result comparison"
+          ]
+        },
+        {
+          "section_id": "7.7",
+          "title": "Shots and Results",
+          "explanation": "Understand shots, counts, probabilities and basic execution metadata.",
+          "points": [
+            "Shots",
+            "Counts",
+            "Probabilities",
+            "Execution time"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Understand why simulation is useful.",
+        "Recognize the named quantum frameworks/backends.",
+        "Read basic simulation output."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    },
+    {
+      "chapter_id": 8,
+      "title": "Quantum Algorithms",
+      "difficulty": "Intermediate",
+      "overview": "Explore the standard algorithms explicitly named in the problem statement through structured explanations, circuit examples and simulation.",
+      "learning_objectives": [
+        "Recognize the four named algorithms.",
+        "Understand their high-level purpose.",
+        "Run and inspect small educational examples."
+      ],
+      "sections": [
+        {
+          "section_id": "8.1",
+          "title": "What is a Quantum Algorithm?",
+          "explanation": "A quantum algorithm is a sequence of quantum operations designed to solve or study a computational problem using a quantum system.",
+          "points": [
+            "Algorithm concept",
+            "Circuit representation",
+            "Execution"
+          ]
+        },
+        {
+          "section_id": "8.2",
+          "title": "Deutsch-Jozsa Algorithm",
+          "explanation": "Study the purpose and circuit structure of Deutsch-Jozsa through a small educational example.",
+          "points": [
+            "Problem idea",
+            "Oracle concept",
+            "Circuit",
+            "Simulation",
+            "Result"
+          ]
+        },
+        {
+          "section_id": "8.3",
+          "title": "Grover's Algorithm",
+          "explanation": "Study Grover as a quantum search example using a small circuit suitable for interactive simulation.",
+          "points": [
+            "Search problem",
+            "Oracle concept",
+            "Amplification concept",
+            "Circuit",
+            "Histogram"
+          ]
+        },
+        {
+          "section_id": "8.4",
+          "title": "QAOA",
+          "explanation": "Study QAOA as a parameterized algorithm named in the problem statement.",
+          "points": [
+            "Optimization concept",
+            "Parameterized circuit",
+            "Parameters",
+            "Simulation"
+          ]
+        },
+        {
+          "section_id": "8.5",
+          "title": "VQE",
+          "explanation": "Study VQE as a parameterized algorithm named in the problem statement.",
+          "points": [
+            "Variational concept",
+            "Parameterized circuit",
+            "Evaluation",
+            "Result"
+          ]
+        },
+        {
+          "section_id": "8.6",
+          "title": "Algorithm Comparison",
+          "explanation": "Compare the purpose and interaction pattern of the listed algorithms.",
+          "points": [
+            "Deutsch-Jozsa",
+            "Grover",
+            "QAOA",
+            "VQE",
+            "Result interpretation"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Recognize the four named algorithms.",
+        "Understand their high-level purpose.",
+        "Run and inspect small educational examples."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    },
+    {
+      "chapter_id": 9,
+      "title": "Quantum State and Result Visualization",
+      "difficulty": "Intermediate",
+      "overview": "Learn to interpret the visual outputs required by the platform: circuit rendering, measurement histograms, statevectors and Bloch sphere views.",
+      "learning_objectives": [
+        "Read a circuit rendering.",
+        "Interpret histograms and statevector information.",
+        "Use the Bloch sphere as an interactive learning visualization."
+      ],
+      "sections": [
+        {
+          "section_id": "9.1",
+          "title": "Circuit Rendering",
+          "explanation": "See the circuit as a readable visual sequence of gates and measurements.",
+          "points": [
+            "Qubit wires",
+            "Gate symbols",
+            "Operation order"
+          ]
+        },
+        {
+          "section_id": "9.2",
+          "title": "Measurement Histogram",
+          "explanation": "Use a histogram to inspect measurement counts or probabilities.",
+          "points": [
+            "Outcome labels",
+            "Counts",
+            "Probabilities",
+            "Comparison"
+          ]
+        },
+        {
+          "section_id": "9.3",
+          "title": "Probability Distribution",
+          "explanation": "Convert measurement counts into an intuitive probability view.",
+          "points": [
+            "Frequency",
+            "Probability",
+            "Distribution"
+          ]
+        },
+        {
+          "section_id": "9.4",
+          "title": "Statevector Display",
+          "explanation": "Inspect amplitudes/state information returned by a simulator where supported.",
+          "points": [
+            "Statevector",
+            "Amplitudes",
+            "Basis states"
+          ]
+        },
+        {
+          "section_id": "9.5",
+          "title": "Bloch Sphere",
+          "explanation": "Use a Bloch sphere visualization to explore a single-qubit state.",
+          "points": [
+            "Axes",
+            "State direction",
+            "Before/after gate comparison"
+          ]
+        },
+        {
+          "section_id": "9.6",
+          "title": "Reading Visual Results",
+          "explanation": "Connect visual outputs with the circuit that produced them.",
+          "points": [
+            "Circuit",
+            "State",
+            "Measurement",
+            "Interpretation"
+          ]
+        },
+        {
+          "section_id": "9.7",
+          "title": "Interactive Visualization Exercise",
+          "explanation": "Change a gate, rerun the circuit and compare the visualization.",
+          "points": [
+            "Modify",
+            "Run",
+            "Compare",
+            "Explain"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Read a circuit rendering.",
+        "Interpret histograms and statevector information.",
+        "Use the Bloch sphere as an interactive learning visualization."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    },
+    {
+      "chapter_id": 10,
+      "title": "Assessment, Challenges and Learning Progress",
+      "difficulty": "Intermediate",
+      "overview": "Check learning through quizzes and practical challenges, calculate performance and track learner progress.",
+      "learning_objectives": [
+        "Complete assessments.",
+        "Understand how automatic grading works.",
+        "Track and interpret learning progress."
+      ],
+      "sections": [
+        {
+          "section_id": "10.1",
+          "title": "Learning Assessment",
+          "explanation": "Use assessments to verify understanding after lessons.",
+          "points": [
+            "Quiz",
+            "MCQ",
+            "Score",
+            "Feedback"
+          ]
+        },
+        {
+          "section_id": "10.2",
+          "title": "MCQ Quizzes",
+          "explanation": "Answer structured multiple-choice questions covering course topics.",
+          "points": [
+            "Question",
+            "Options",
+            "Correct answer",
+            "Explanation"
+          ]
+        },
+        {
+          "section_id": "10.3",
+          "title": "Coding Challenges",
+          "explanation": "Write quantum code for a specified circuit or task.",
+          "points": [
+            "Problem statement",
+            "Code editor",
+            "Run",
+            "Submit"
+          ]
+        },
+        {
+          "section_id": "10.4",
+          "title": "Circuit Challenges",
+          "explanation": "Construct a target circuit using the visual circuit designer.",
+          "points": [
+            "Instructions",
+            "Build",
+            "Validate",
+            "Submit"
+          ]
+        },
+        {
+          "section_id": "10.5",
+          "title": "Automated Grading",
+          "explanation": "Evaluate submissions using defined deterministic rules.",
+          "points": [
+            "Expected structure",
+            "Validation",
+            "Score",
+            "Feedback"
+          ]
+        },
+        {
+          "section_id": "10.6",
+          "title": "Progress Tracking",
+          "explanation": "Store completed lessons, quiz scores and challenge results.",
+          "points": [
+            "Completion",
+            "Scores",
+            "Attempts",
+            "Overall progress"
+          ]
+        },
+        {
+          "section_id": "10.7",
+          "title": "Performance Analytics",
+          "explanation": "Summarize learning performance for the student.",
+          "points": [
+            "Topic performance",
+            "Quiz average",
+            "Challenge performance",
+            "Weak areas"
+          ]
+        },
+        {
+          "section_id": "10.8",
+          "title": "Instructor Dashboard",
+          "explanation": "Provide an instructor view of learner progress and performance as required by the problem statement.",
+          "points": [
+            "Student list",
+            "Progress",
+            "Performance",
+            "Weak topics"
+          ]
+        },
+        {
+          "section_id": "10.9",
+          "title": "Authentication and Web Application",
+          "explanation": "Provide user authentication and a responsive web application around the learning experience.",
+          "points": [
+            "Register",
+            "Login",
+            "Protected pages",
+            "Responsive UI"
+          ]
+        }
+      ],
+      "key_takeaways": [
+        "Complete assessments.",
+        "Understand how automatic grading works.",
+        "Track and interpret learning progress."
+      ],
+      "practice_types": [
+        "Interactive example",
+        "Quiz",
+        "Circuit practice",
+        "Code practice"
+      ]
+    }
+  ]
+}

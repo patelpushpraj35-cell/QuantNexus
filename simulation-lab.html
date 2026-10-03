@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulation Lab – QuantNexus</title>
+  <meta name="description" content="Simulate quantum circuits across Qiskit Aer, PennyLane, Cirq, and qBraid backends with normalized outputs and comparative analysis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/ai-assistant.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="app-page">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon-sm">⚛️</span>
+      <span class="brand-name-sm">QuantNexus</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item" id="navDashboard">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="chapters.html" class="nav-item" id="navChapters">
+        <span class="nav-icon">📚</span>
+        <span>Chapters</span>
+      </a>
+      <a href="circuit-lab.html" class="nav-item" id="navLab">
+        <span class="nav-icon">⚡</span>
+        <span>Circuit Lab</span>
+      </a>
+      <a href="simulation-lab.html" class="nav-item active" id="navSimLab">
+        <span class="nav-icon">🧪</span>
+        <span>Simulation Lab</span>
+      </a>
+      <a href="coding-challenges.html" class="nav-item" id="navChallenges">
+        <span class="nav-icon">🏆</span>
+        <span>Challenges</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info" id="sidebarUser">
+        <div class="user-avatar" id="sidebarAvatar">?</div>
+        <div class="user-details">
+          <div class="user-name" id="sidebarName">Loading...</div>
+          <div class="user-role">Student</div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="handleLogout()" title="Logout">⏻</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+      <div class="topbar-title">🧪 Quantum Simulation Lab</div>
+      <div class="topbar-right">
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-label">Dark</span>
+        </button>
+        <span class="badge-sih">Objective 3: Multi-Backend Simulation</span>
+        <a href="circuit-lab.html" class="btn-back">⚡ Circuit Lab</a>
+      </div>
+    </header>
+
+    <div class="page-body">
+
+      <!-- Lab Header Banner -->
+      <div class="lab-header-banner sim-header-banner">
+        <div>
+          <h2>Multiple Quantum Simulation Backends</h2>
+          <p>Execute your quantum circuits across industrial backends: <strong>Qiskit Aer</strong> (IBM), <strong>PennyLane</strong> (Xanadu), <strong>Cirq</strong> (Google), and <strong>qBraid Quantum Cloud</strong> with normalized results and side-by-side comparison.</p>
+        </div>
+        <div class="sim-header-actions">
+          <button class="btn-secondary" onclick="openQbraidModal()" title="Configure qBraid Quantum Cloud API credentials">
+            <span>⚙️ qBraid Settings</span>
+          </button>
+          <a href="circuit-lab.html" class="btn-secondary" title="Open the Graphical Builder to design new circuits">
+            <span>✏️ Edit in Circuit Lab</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Circuit Source & Preview Bar -->
+      <div class="sim-circuit-card">
+        <div class="sim-circuit-header">
+          <div class="sim-circuit-title-row">
+            <span class="sim-badge" id="circuitSourceBadge">⚡ Circuit from Lab</span>
+            <h3 id="currentCircuitTitle">Active Circuit: 2-Qubit Bell State (|Φ⁺⟩)</h3>
+          </div>
+          <div class="sim-circuit-meta">
+            <span class="meta-pill" id="simQubitCountPill">2 Qubits</span>
+            <span class="meta-pill" id="simGateCountPill">2 Gates</span>
+            <div class="preset-selector-wrap">
+              <label for="simPresetSelect">Load Preset:</label>
+              <select id="simPresetSelect" class="control-select" onchange="onPresetChange(this.value)">
+                <option value="current">Current Active Circuit</option>
+                <option value="bell" selected>Bell State (|Φ⁺⟩)</option>
+                <option value="superposition">Superposition & Phase (H-Z-H)</option>
+                <option value="ghz">3-Qubit GHZ Entanglement</option>
+                <option value="swap">SWAP Test Circuit</option>
+                <option value="teleportation">Teleportation Entangler</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Circuit Strip Preview -->
+        <div class="circuit-strip-preview" id="circuitStripPreview">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+
+      <!-- Simulation Execution Controls -->
+      <div class="sim-controls-panel">
+        <div class="sim-control-item">
+          <label for="backendSelect">Simulation Backend:</label>
+          <div class="backend-select-wrapper">
+            <select id="backendSelect" class="control-select sim-select" onchange="onBackendChange()">
+              <option value="qiskit_aer">IBM Qiskit Aer (Statevector)</option>
+              <option value="pennylane">Xanadu PennyLane (default.qubit)</option>
+              <option value="cirq">Google Cirq (cirq.Simulator)</option>
+              <option value="qbraid">qBraid Quantum Cloud (Remote Device)</option>
+            </select>
+            <span class="backend-status-indicator" id="backendStatusIndicator" title="Backend Status">● Ready</span>
+          </div>
+        </div>
+
+        <div class="sim-control-item">
+          <label for="shotsInput">Measurement Shots:</label>
+          <div class="shots-input-row">
+            <select id="shotsPresetSelect" class="control-select" onchange="onShotsPresetChange(this.value)">
+              <option value="100">100 Shots</option>
+              <option value="1024" selected>1,024 Shots (Standard)</option>
+              <option value="4096">4,096 Shots (High Precision)</option>
+              <option value="8192">8,192 Shots</option>
+              <option value="custom">Custom...</option>
+            </select>
+            <input type="number" id="customShotsInput" class="custom-shots-field hidden" min="1" max="50000" value="1024" placeholder="Shots (1-50000)" />
+          </div>
+        </div>
+
+        <div class="sim-buttons-group">
+          <button class="btn-primary btn-run-sim" id="btnRunSim" onclick="executeSelectedBackend()" title="Run circuit on selected backend">
+            <span class="btn-icon">▶</span>
+            <span>Run Simulation</span>
+          </button>
+          <button class="btn-compare-all" id="btnCompareAll" onclick="executeCompareAll()" title="Run across Qiskit Aer, PennyLane, and Cirq and compare distributions">
+            <span class="btn-icon">⚡</span>
+            <span>Compare Backends</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Execution Status & Notification Bar -->
+      <div id="simNotificationBar" class="sim-notification-bar hidden">
+        <span id="simNotificationIcon">ℹ️</span>
+        <span id="simNotificationText">Simulation running...</span>
+      </div>
+
+      <!-- Single Backend Result Container -->
+      <div id="singleResultContainer" class="sim-results-wrapper">
+
+        <!-- Metrics Overview Grid -->
+        <div class="sim-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-label">Selected Backend</div>
+            <div class="metric-value-lg" id="resBackendName">Qiskit Aer</div>
+            <div class="metric-sub" id="resBackendProvider">IBM Quantum</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Execution Status</div>
+            <div class="metric-value-lg" id="resStatusBadge">
+              <span class="status-pill status-success">● SUCCESS</span>
+            </div>
+            <div class="metric-sub" id="resExecutionTime">Runtime: 12.4 ms</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Shots Sampled</div>
+            <div class="metric-value-lg" id="resShotsCount">1,024</div>
+            <div class="metric-sub" id="resTranspileDepth">Depth: 2 cycles</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Bit Ordering Convention</div>
+            <div class="metric-value-lg" id="resBitOrdering">Little-Endian</div>
+            <div class="metric-sub" id="resBitOrderingSub">|qN-1 ... q0⟩ (LSB = q0)</div>
+          </div>
+        </div>
+
+        <!-- Unavailable / Error Callout Banner (shown if backend unavailable, e.g. unconfigured qBraid) -->
+        <div id="resErrorCallout" class="error-callout-card hidden">
+          <div class="error-callout-header">
+            <span class="error-icon">⚠️</span>
+            <h4 id="errorCalloutTitle">Backend Unavailable</h4>
+          </div>
+          <p id="errorCalloutMessage"></p>
+          <div class="error-callout-actions">
+            <button class="btn-secondary" onclick="openQbraidModal()">⚙️ Configure qBraid Credentials</button>
+            <button class="btn-primary" onclick="switchBackend('qiskit_aer')">Switch to Qiskit Aer</button>
+          </div>
+        </div>
+
+        <!-- Main Results Grid: Histogram + Counts/Probabilities -->
+        <div class="results-visual-grid" id="resVisualGrid">
+
+          <!-- Histogram Panel -->
+          <div class="panel-card histogram-panel">
+            <div class="panel-header">
+              <h3>📊 Measurement Probability Histogram</h3>
+              <span class="panel-tag" id="histShotsTag">1,024 Shots</span>
+            </div>
+            <div class="histogram-chart-area" id="simHistogramChart">
+              <!-- Rendered by JS -->
+            </div>
+            <div class="histogram-legend">
+              <span class="legend-item"><span class="legend-dot" style="background: var(--primary);"></span> Measured Frequency</span>
+              <span class="legend-note" id="histNotes">Hover over bars for exact shot counts</span>
+            </div>
+          </div>
+
+          <!-- Measurement Breakdown Table & Details -->
+          <div class="panel-card counts-panel">
+            <div class="panel-header">
+              <h3>📋 Measurement Counts & Probabilities</h3>
+              <span class="panel-tag">Common Format</span>
+            </div>
+            <div class="counts-table-wrapper">
+              <table class="sim-table" id="countsTable">
+                <thead>
+                  <tr>
+                    <th>Basis State</th>
+                    <th>Shots</th>
+                    <th>Probability</th>
+                    <th>Distribution</th>
+                  </tr>
+                </thead>
+                <tbody id="countsTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Backend Details Box -->
+            <div class="backend-details-box">
+              <div class="details-title">Engine Specifications:</div>
+              <div class="details-list" id="backendDetailsList">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Native Framework Code Viewer -->
+        <div class="panel-card code-export-panel">
+          <div class="panel-header">
+            <div class="code-header-left">
+              <h3>💻 Native Framework Code Representation</h3>
+              <span class="panel-tag" id="codeLanguageTag">Qiskit Python (1.x)</span>
+            </div>
+            <button class="btn-secondary btn-copy" onclick="copyBackendCode()" id="btnCopyCode">
+              <span>📋 Copy Code</span>
+            </button>
+          </div>
+          <div class="sim-code-wrapper">
+            <pre><code id="simCodeDisplay"># Loading framework code...</code></pre>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Multi-Backend Comparison View (Hidden by default, shown on Compare All) -->
+      <div id="compareResultContainer" class="sim-results-wrapper hidden">
+
+        <!-- Comparison Header Banner -->
+        <div class="compare-banner">
+          <div class="compare-banner-text">
+            <h3>⚡ Side-by-Side Multi-Backend Distribution Comparison</h3>
+            <p>The exact same circuit evaluated across <strong>Qiskit Aer</strong>, <strong>PennyLane</strong>, and <strong>Cirq</strong>. Observe how different simulator engines produce consistent physical outcomes with slight shot noise differences and framework-specific bit ordering conventions.</p>
+          </div>
+          <div class="compare-stat-badge">
+            <div class="badge-big" id="compareAgreementScore">99.8%</div>
+            <div class="badge-label">Distribution Agreement</div>
+          </div>
+        </div>
+
+        <!-- Grouped Comparative Histogram -->
+        <div class="panel-card compare-histogram-card">
+          <div class="panel-header">
+            <h3>📊 Grouped Comparative Histogram</h3>
+            <div class="compare-legend">
+              <span class="legend-item"><span class="legend-dot" style="background: #8b5cf6;"></span> Qiskit Aer (IBM)</span>
+              <span class="legend-item"><span class="legend-dot" style="background: #06b6d4;"></span> PennyLane (Xanadu)</span>
+              <span class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Cirq (Google)</span>
+            </div>
+          </div>
+          <div class="compare-chart-area" id="compareHistogramChart">
+            <!-- Grouped bars rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Comparative Metrics Table -->
+        <div class="panel-card compare-table-card">
+          <div class="panel-header">
+            <h3>🔍 Measurement & Metric Breakdown by Backend</h3>
+            <span class="panel-tag">Normalized Physical Basis States</span>
+          </div>
+          <div class="counts-table-wrapper">
+            <table class="sim-table compare-table" id="compareMetricsTable">
+              <thead>
+                <tr>
+                  <th>Physical State |q₀q₁...⟩</th>
+                  <th>Qiskit Aer (Little-Endian)</th>
+                  <th>PennyLane (Big-Endian)</th>
+                  <th>Cirq (Big-Endian)</th>
+                  <th>Theoretical Amplitude</th>
+                  <th>Maximum Variance</th>
+                </tr>
+              </thead>
+              <tbody id="compareTableBody">
+                <!-- Injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Educational Insight Cards -->
+        <div class="compare-insights-grid">
+          <div class="insight-card">
+            <h4>💡 Key Takeaway: Bit-Ordering Conventions</h4>
+            <p><strong>IBM Qiskit</strong> lists classical measurement results in <em>little-endian</em> order (qubit 0 is the least significant bit on the far right: <code>|qN-1...q0⟩</code>). In contrast, <strong>Google Cirq</strong> and <strong>Xanadu PennyLane</strong> list results in <em>big-endian</em> order (wire 0 is on the left: <code>|q0...qN-1⟩</code>). QuantNexus standardizes both views so you can see that the physical quantum state is identical!</p>
+          </div>
+          <div class="insight-card">
+            <h4>🎲 Finite Shot Sampling Variance</h4>
+            <p>Because quantum measurement projects a superposition into discrete classical outcomes, running with finite shots introduces statistical shot noise that scales as $1/\sqrt{N}$. Higher shots (e.g. 4,096) converge closer to the exact theoretical probability distribution.</p>
+          </div>
+        </div>
+
+        <!-- Code Comparison Tabs -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <h3>📑 Framework Implementation Comparison</h3>
+            <div class="code-tabs">
+              <button class="code-tab active" onclick="switchCompareCodeTab('qiskit_aer')">Qiskit (IBM)</button>
+              <button class="code-tab" onclick="switchCompareCodeTab('pennylane')">PennyLane (Xanadu)</button>
+              <button class="code-tab" onclick="switchCompareCodeTab('cirq')">Cirq (Google)</button>
+              <button class="code-tab" onclick="switchCompareCodeTab('qbraid')">qBraid SDK</button>
+            </div>
+          </div>
+          <div class="sim-code-wrapper">
+            <pre><code id="compareCodeDisplay"># Select a framework tab to view its syntax...</code></pre>
+          </div>
+        </div>
+
+        <div class="compare-footer-action">
+          <button class="btn-secondary" onclick="returnToSingleBackend()">← Return to Single Backend View</button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- qBraid Settings Modal -->
+  <div class="modal-overlay hidden" id="qbraidModal">
+    <div class="sim-modal-content">
+      <div class="sim-modal-header">
+        <h3>⚙️ qBraid Quantum Cloud Configuration</h3>
+        <button class="btn-close-modal" onclick="closeQbraidModal()">✕</button>
+      </div>
+      <div class="sim-modal-body">
+        <p class="modal-desc">
+          The <strong>qBraid Quantum Cloud adapter</strong> routes quantum circuits to remote cloud-managed quantum processors (QPU) and high-performance simulators (AWS Braket, IBM Quantum, Rigetti via qBraid).
+        </p>
+
+        <div class="qbraid-status-box" id="qbraidStatusBox">
+          <span class="status-indicator-dot unconfigured"></span>
+          <span id="qbraidStatusText">Status: Not Configured (Local simulators available)</span>
+        </div>
+
+        <div class="form-group">
+          <label for="qbraidApiKeyInput">qBraid API Key:</label>
+          <div class="password-input-wrap">
+            <input type="password" id="qbraidApiKeyInput" placeholder="Enter your qBraid API Key (e.g., qb_live_...)" />
+            <button type="button" class="btn-toggle-eye" onclick="toggleApiKeyVisibility()" id="btnEye">👁️</button>
+          </div>
+          <small class="form-hint">Stored safely in your local browser storage. Never transmitted to third parties.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="qbraidDeviceSelect">Target Device / Simulator:</label>
+          <select id="qbraidDeviceSelect" class="control-select">
+            <option value="qbraid_qir_simulator">qBraid QIR High-Performance Simulator</option>
+            <option value="aws_braket_sv1">AWS Braket SV1 Statevector Simulator</option>
+            <option value="ibm_perth_simulator">IBM Quantum Perth (Managed Simulator)</option>
+            <option value="rigetti_aspen_m3">Rigetti Aspen-M3 QPU (Remote Hardware)</option>
+          </select>
+        </div>
+
+        <div class="qbraid-info-note">
+          ℹ️ <strong>Honest Adapter Policy:</strong> QuantNexus does not generate fake cloud results when credentials are unconfigured. To test quantum circuits without an API key, use the built-in local backends (<strong>Qiskit Aer</strong>, <strong>PennyLane</strong>, and <strong>Cirq</strong>).
+        </div>
+      </div>
+      <div class="sim-modal-footer">
+        <button class="btn-secondary" onclick="clearQbraidCredentials()">Clear Key</button>
+        <button class="btn-primary" onclick="saveQbraidCredentials()">Save & Verify</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/backendAdapters.js"></script>
+  <script src="js/simulationLab.js"></script>
+  <script src="js/ai-assistant.js"></script>
+</body>
+</html>

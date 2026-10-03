@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum Circuit Lab – QuantNexus | Objective 2</title>
+  <meta name="description" content="Design quantum circuits with both a graphical drag-and-drop builder and Python code editor. Run simulations and see real-time statevectors, histograms, and Bloch spheres." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/ai-assistant.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="app-page">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon-sm">⚛️</span>
+      <span class="brand-name-sm">QuantNexus</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item" id="navDashboard">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="chapters.html" class="nav-item" id="navChapters">
+        <span class="nav-icon">📚</span>
+        <span>Chapters</span>
+      </a>
+      <a href="circuit-lab.html" class="nav-item active" id="navLab">
+        <span class="nav-icon">⚡</span>
+        <span>Circuit Lab</span>
+      </a>
+      <a href="simulation-lab.html" class="nav-item" id="navSimLab">
+        <span class="nav-icon">🧪</span>
+        <span>Simulation Lab</span>
+      </a>
+      <a href="coding-challenges.html" class="nav-item" id="navChallenges">
+        <span class="nav-icon">🏆</span>
+        <span>Challenges</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info" id="sidebarUser">
+        <div class="user-avatar" id="sidebarAvatar">?</div>
+        <div class="user-details">
+          <div class="user-name" id="sidebarName">Loading...</div>
+          <div class="user-role">Student</div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="handleLogout()" title="Logout">⏻</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+      <div class="topbar-title">⚡ Quantum Circuit Lab</div>
+      <div class="topbar-right">
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-label">Dark</span>
+        </button>
+        <span class="badge-sih">Objective 2: Graphical + Code</span>
+      </div>
+    </header>
+
+    <div class="page-body">
+
+      <!-- Lab Header Banner -->
+      <div class="lab-header-banner">
+        <div>
+          <h2>Graphical + Code-Based Circuit Design</h2>
+          <p>Build quantum circuits visually or write Qiskit Python code. Changes sync seamlessly in both directions!</p>
+        </div>
+        <div class="lab-actions-bar">
+          <button class="btn-primary btn-run" onclick="runCircuitSimulation()" title="Simulate and execute circuit">
+            <span>▶ Run Circuit</span>
+          </button>
+          <button class="btn-secondary" onclick="resetCircuit()" title="Restore default Bell State">↺ Reset</button>
+          <button class="btn-secondary" onclick="clearCircuit()" title="Clear all gates">🗑️ Clear</button>
+          <button class="btn-secondary" onclick="saveCurrentCircuit()" title="Save circuit to browser storage">💾 Save</button>
+          <button class="btn-primary btn-sim-export" onclick="sendToSimulationLab()" title="Send this circuit to the Multi-Backend Simulation Lab">
+            <span>🧪 Send to Sim Lab →</span>
+          </button>
+          <select class="control-select" id="savedCircuitsSelect" aria-label="Saved circuits">
+            <option value="">📂 Load Saved Circuit</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Controls Row -->
+      <div class="lab-controls-row">
+        <div class="control-group">
+          <label>Templates / Presets:</label>
+          <select class="control-select" id="presetSelect" aria-label="Select circuit preset">
+            <option value="bell">Bell State (|Φ⁺⟩)</option>
+            <option value="superposition">Superposition & Interference</option>
+            <option value="ghz">3-Qubit GHZ State</option>
+            <option value="swap">SWAP Gate Test</option>
+            <option value="teleportation_core">Teleportation Entangler</option>
+            <option value="blank">Blank Canvas</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label>Qubit Count:</label>
+          <div class="qubit-btn-group">
+            <button class="qubit-btn" data-qubits="1">1 Qubit</button>
+            <button class="qubit-btn active" data-qubits="2">2 Qubits</button>
+            <button class="qubit-btn" data-qubits="3">3 Qubits</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Simulation Shots:</label>
+          <select class="control-select" id="shotsSelect" aria-label="Simulation shots">
+            <option value="1024" selected>1,024 Shots</option>
+            <option value="4096">4,096 Shots</option>
+            <option value="100">100 Shots</option>
+          </select>
+        </div>
+
+        <div class="circuit-metrics-tag" id="circuitMetrics">
+          <span>Qubits: <strong>2</strong></span>
+          <span>Total Gates: <strong>2</strong></span>
+        </div>
+      </div>
+
+      <!-- Dual Workspace: Graphical Builder & Code Editor -->
+      <div class="lab-workspace-grid">
+
+        <!-- Column 1: Graphical Builder -->
+        <div class="lab-card graphical-card">
+          <div class="card-header-row">
+            <div class="card-title">
+              <span class="icon">🎨</span>
+              <h3>Graphical Circuit Builder</h3>
+            </div>
+            <span class="hint-pill">Drag & Drop or Click to Place</span>
+          </div>
+
+          <!-- Gate Palette -->
+          <div class="gate-palette-wrap">
+            <div class="palette-category">
+              <span class="cat-label">1-Qubit Gates:</span>
+              <div class="palette-gates">
+                <button class="palette-gate gate-h" draggable="true" data-gate="H" title="Hadamard: Creates equal superposition">H</button>
+                <button class="palette-gate gate-x" draggable="true" data-gate="X" title="Pauli-X: Bit flip (NOT gate)">X</button>
+                <button class="palette-gate gate-y" draggable="true" data-gate="Y" title="Pauli-Y: Bit + phase flip">Y</button>
+                <button class="palette-gate gate-z" draggable="true" data-gate="Z" title="Pauli-Z: Phase flip">Z</button>
+                <button class="palette-gate gate-s" draggable="true" data-gate="S" title="S Gate: Phase π/2 rotation">S</button>
+                <button class="palette-gate gate-t" draggable="true" data-gate="T" title="T Gate: Phase π/4 rotation">T</button>
+              </div>
+            </div>
+            <div class="palette-category">
+              <span class="cat-label">Multi-Qubit:</span>
+              <div class="palette-gates">
+                <button class="palette-gate gate-cnot" draggable="true" data-gate="CNOT" title="CNOT: Controlled-NOT (flips target if control=1)">CNOT</button>
+                <button class="palette-gate gate-swap" draggable="true" data-gate="SWAP" title="SWAP: Exchanges two qubit states">SWAP</button>
+              </div>
+            </div>
+            <div class="palette-category">
+              <span class="cat-label">Measure:</span>
+              <div class="palette-gates">
+                <button class="palette-gate gate-m" draggable="true" data-gate="M" title="Measurement in computational basis">M</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Circuit Diagram Canvas -->
+          <div class="circuit-diagram-wrap">
+            <svg class="circuit-wire-svg" id="circuitWireSvg"></svg>
+            <div class="circuit-grid" id="circuitGrid">
+              <!-- Dynamically populated wire rows and slots -->
+            </div>
+          </div>
+          <p class="canvas-help-text">💡 <strong>Tip:</strong> Click any gate chip in the diagram to remove it. Multi-qubit CNOT connects control (•) and target (⊕).</p>
+        </div>
+
+        <!-- Column 2: Code Editor -->
+        <div class="lab-card code-card">
+          <div class="card-header-row">
+            <div class="card-title">
+              <span class="icon">💻</span>
+              <h3>Quantum Code Editor</h3>
+            </div>
+            <div class="code-header-right">
+              <span class="sync-badge sync-ok" id="syncBadge">● Synchronized</span>
+              <button class="btn-sync" onclick="syncCodeToCircuit()" title="Parse code and update visual diagram">
+                ⚡ Sync to Circuit
+              </button>
+            </div>
+          </div>
+
+          <!-- Code Error Banner -->
+          <div class="code-error-box hidden" id="codeErrorBox"></div>
+
+          <!-- Code Editor Body -->
+          <div class="code-editor-wrap">
+            <div class="code-gutter" id="codeLineNumbers">1<br>2<br>3<br>4</div>
+            <textarea class="code-textarea" id="codeEditor" spellcheck="false" autocomplete="off" aria-label="Quantum Python Code"></textarea>
+          </div>
+          <div class="code-footer-hint">
+            <span>Syntax: Standard Qiskit syntax (<code>qc.h(0)</code>, <code>qc.cx(0, 1)</code>, <code>qc.measure_all()</code>).</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Visual Results Dashboard -->
+      <section class="results-section">
+        <div class="results-header">
+          <h3>📊 Real-Time Visual Simulation</h3>
+          <p>Instant matrix math calculation of statevectors, probabilities, and geometric Bloch coordinates.</p>
+        </div>
+
+        <div class="results-grid">
+
+          <!-- 1. Measurement Histogram -->
+          <div class="result-card">
+            <div class="result-card-title">
+              <span>📊 Measurement Histogram</span>
+              <small id="histSubtitle">1,024 Shots</small>
+            </div>
+            <div class="histogram-container" id="histogramContainer">
+              <!-- Animated Histogram Bars -->
+            </div>
+          </div>
+
+          <!-- 2. Statevector & Phase Readout -->
+          <div class="result-card">
+            <div class="result-card-title">
+              <span>📐 Quantum Statevector</span>
+              <small>Complex Amplitudes (α)</small>
+            </div>
+            <div class="statevector-formula" id="svFormula">
+              |ψ⟩ = (|00⟩ + |11⟩) / √2
+            </div>
+            <div class="statevector-cards" id="svCards">
+              <!-- Amplitude Cards -->
+            </div>
+          </div>
+
+          <!-- 3. Bloch Sphere -->
+          <div class="result-card bloch-card">
+            <div class="result-card-title">
+              <span>🌐 3D Bloch Sphere View</span>
+              <select class="control-select select-sm" id="blochQubitSelect" aria-label="Select qubit for Bloch sphere">
+                <option value="0">Qubit q[0]</option>
+                <option value="1">Qubit q[1]</option>
+              </select>
+            </div>
+            <div class="bloch-canvas-wrap">
+              <canvas id="blochCanvas" width="220" height="220"></canvas>
+            </div>
+            <div class="bloch-coords" id="blochCoords">
+              (x, y, z) = (0.00, 0.00, 1.00)
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/circuitLab.js"></script>
+  <script src="js/ai-assistant.js"></script>
+</body>
+</html>

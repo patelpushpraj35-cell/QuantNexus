@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuantNexus – Quantum Computing Learning Platform | SIH 26140</title>
+  <meta name="description" content="Learn Quantum Computing step-by-step on QuantNexus — the interactive online learning platform for SIH 26140. 20 chapters, quizzes, and progress tracking." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="auth-page">
+
+  <!-- Floating Theme Toggle -->
+  <div class="auth-theme-wrapper">
+    <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-label">Dark</span>
+    </button>
+  </div>
+
+  <div class="bg-canvas">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+  </div>
+
+  <div class="auth-container" id="authContainer">
+
+    <div class="auth-brand">
+      <div class="brand-icon">⚛️</div>
+      <h1 class="brand-name">QuantNexus</h1>
+      <p class="brand-tagline">Quantum Computing Learning Platform</p>
+      <span class="brand-badge">SIH 26140</span>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="loginTab" onclick="switchTab('login')">Login</button>
+      <button class="auth-tab" id="registerTab" onclick="switchTab('register')">Register</button>
+    </div>
+
+    <form class="auth-form" id="loginForm" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label for="loginEmail">Email Address</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="Your password" required autocomplete="current-password" />
+      </div>
+      <div class="form-error" id="loginError"></div>
+      <button type="submit" class="btn-primary btn-full" id="loginBtn">
+        <span>Sign In</span>
+        <span class="btn-arrow">→</span>
+      </button>
+      <div class="quick-demo-roles">
+        <div class="quick-demo-title">⚡ 1-Click Role Login:</div>
+        <div class="quick-demo-btns">
+          <button type="button" class="btn-demo-role" onclick="quickRoleLogin('student')" title="Log in as Student">
+            👨‍🎓 Student
+          </button>
+          <button type="button" class="btn-demo-role" onclick="quickRoleLogin('instructor')" title="Log in as Instructor">
+            👩‍🏫 Instructor
+          </button>
+          <button type="button" class="btn-demo-role" onclick="quickRoleLogin('admin')" title="Log in as Administrator">
+            🛡️ Admin
+          </button>
+        </div>
+      </div>
+      <p class="auth-hint">Demo Credentials: <strong>demo@quantnexus.in</strong> | <strong>instructor@quantnexus.in</strong> | <strong>admin@quantnexus.in</strong></p>
+    </form>
+
+    <form class="auth-form hidden" id="registerForm" onsubmit="handleRegister(event)">
+      <div class="form-group">
+        <label for="regName">Full Name</label>
+        <input type="text" id="regName" placeholder="Your full name" required autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label for="regEmail">Email Address</label>
+        <input type="email" id="regEmail" placeholder="you@example.com" required autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="regRole">Account Role</label>
+        <select id="regRole" class="control-select" style="width:100%;">
+          <option value="student" selected>Student / Learner</option>
+          <option value="instructor">Instructor / Educator</option>
+          <option value="admin">Platform Administrator</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" placeholder="Min. 6 characters" required minlength="6" autocomplete="new-password" />
+      </div>
+      <div class="form-error" id="registerError"></div>
+      <button type="submit" class="btn-primary btn-full" id="registerBtn">
+        <span>Create Account</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </form>
+
+  </div>
+
+  <div class="auth-features">
+    <div class="feature-pill">🎯 20 Structured Chapters</div>
+    <div class="feature-pill">⚡ Interactive Quizzes</div>
+    <div class="feature-pill">📊 Progress Tracking</div>
+    <div class="feature-pill">🔓 Sequential Unlocking</div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
