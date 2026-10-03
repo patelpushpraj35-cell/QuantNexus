@@ -18,40 +18,50 @@
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
-      <span class="brand-icon-sm">⚛️</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--primary-light)">
+        <circle cx="12" cy="12" r="3"></circle>
+        <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"></ellipse>
+        <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-30 12 12)"></ellipse>
+      </svg>
       <span class="brand-name-sm">QuantNexus</span>
     </div>
     <nav class="sidebar-nav">
       <a href="dashboard.html" class="nav-item active" id="navDashboard">
-        <span class="nav-icon">🏠</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
         <span>Dashboard</span>
       </a>
       <a href="chapters.html" class="nav-item" id="navChapters">
-        <span class="nav-icon">📚</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         <span>Chapters</span>
       </a>
       <a href="circuit-lab.html" class="nav-item" id="navLab">
-        <span class="nav-icon">⚡</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         <span>Circuit Lab</span>
       </a>
       <a href="simulation-lab.html" class="nav-item" id="navSimLab">
-        <span class="nav-icon">🧪</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.35 19.26A2 2 0 0 0 6.07 22h11.86a2 2 0 0 0 1.72-2.74L14 9.31V2"/></svg>
         <span>Simulation Lab</span>
       </a>
       <a href="coding-challenges.html" class="nav-item" id="navChallenges">
-        <span class="nav-icon">🏆</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         <span>Challenges</span>
+      </a>
+      <a href="help-desk.html" class="nav-item" id="navHelpDesk">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>Help Desk</span>
       </a>
     </nav>
     <div class="sidebar-footer">
       <div class="user-info" id="sidebarUser">
-        <div class="user-avatar" id="sidebarAvatar">?</div>
+        <div class="user-avatar" id="sidebarAvatar">S</div>
         <div class="user-details">
           <div class="user-name" id="sidebarName">Loading...</div>
           <div class="user-role">Student</div>
         </div>
       </div>
-      <button class="btn-logout" onclick="handleLogout()" title="Logout">⏻</button>
+      <button class="btn-logout" onclick="handleLogout()" title="Logout">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
     </div>
   </aside>
 
@@ -60,11 +70,15 @@
 
     <!-- Top bar -->
     <header class="topbar">
-      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
       <div class="topbar-title">Dashboard</div>
       <div class="topbar-right">
         <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
-          <span class="theme-icon">🌙</span>
+          <span class="theme-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
           <span class="theme-label">Dark</span>
         </button>
         <div class="badge-sih">SIH 26140</div>
@@ -77,7 +91,7 @@
       <!-- Welcome Banner -->
       <div class="welcome-banner">
         <div class="welcome-text">
-          <h2 id="welcomeHeading">Welcome back! 👋</h2>
+          <h2 id="welcomeHeading">Welcome back!</h2>
           <p id="welcomeSubtext">Continue your quantum journey where you left off.</p>
         </div>
         <div class="welcome-stat">
@@ -97,28 +111,36 @@
       <!-- Stats Row -->
       <div class="stats-row">
         <div class="stat-card">
-          <div class="stat-icon">📖</div>
+          <div class="stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
           <div class="stat-info">
             <div class="stat-value" id="statsCompleted">0</div>
             <div class="stat-label">Chapters Done</div>
           </div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">🔓</div>
+          <div class="stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+          </div>
           <div class="stat-info">
             <div class="stat-value" id="statsUnlocked">1</div>
             <div class="stat-label">Unlocked</div>
           </div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">🏆</div>
+          <div class="stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
           <div class="stat-info">
             <div class="stat-value" id="statsAvgScore">—</div>
             <div class="stat-label">Avg. Quiz Score</div>
           </div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">⚡</div>
+          <div class="stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
           <div class="stat-info">
             <div class="stat-value" id="statsStreak">0</div>
             <div class="stat-label">Day Streak</div>
@@ -134,7 +156,7 @@
 
         <!-- Objective 2: Circuit Lab -->
         <div class="obj-card obj-card--purple">
-          <div class="obj-badge">⚡ Obj 2: Circuit Design</div>
+          <div class="obj-badge">Obj 2: Circuit Design</div>
           <h4 class="obj-title">Circuit Lab &amp; Simulator</h4>
           <p class="obj-desc">Build circuits graphically or in Qiskit. View statevectors, histograms &amp; Bloch spheres.</p>
           <a href="circuit-lab.html" class="obj-btn">Launch Circuit Lab</a>
@@ -142,7 +164,7 @@
 
         <!-- Objective 3: Simulation Lab -->
         <div class="obj-card obj-card--cyan">
-          <div class="obj-badge obj-badge--cyan">🧪 Obj 3: Simulation</div>
+          <div class="obj-badge obj-badge--cyan">Obj 3: Simulation</div>
           <h4 class="obj-title">Multi-Backend Simulation</h4>
           <p class="obj-desc">Run across Qiskit Aer, PennyLane, Cirq &amp; qBraid. Compare histograms live.</p>
           <a href="simulation-lab.html" class="obj-btn obj-btn--cyan">Open Simulation Lab</a>
@@ -150,7 +172,7 @@
 
         <!-- Objective 4: Coding Challenges -->
         <div class="obj-card obj-card--green">
-          <div class="obj-badge obj-badge--green">🏆 Obj 4: Challenges</div>
+          <div class="obj-badge obj-badge--green">Obj 4: Challenges</div>
           <h4 class="obj-title">Quantum Coding Challenges</h4>
           <p class="obj-desc">10 Qiskit challenges with instant auto-grading and score tracking.</p>
           <div class="obj-progress-bar-wrap">
@@ -164,8 +186,11 @@
 
       <!-- Chapters Grid -->
       <section class="section-block">
-        <h3 class="section-title">&#128218; All Chapters</h3>
+        <h3 class="section-title">All Chapters</h3>
         <div class="chapters-grid" id="dashChaptersGrid">
+          <!-- populated by JS -->
+        </div>
+      </section>
           <!-- populated by JS -->
         </div>
       </section>

@@ -30,11 +30,11 @@ function renderChaptersList(prog) {
 
     let badgeClass, badgeText, statusIcon;
     if (isCompleted) {
-      badgeClass = 'badge-done'; badgeText = '✅ Completed'; statusIcon = '✅';
+      badgeClass = 'badge-done'; badgeText = 'Completed'; statusIcon = '✓';
     } else if (isLocked) {
-      badgeClass = 'badge-locked'; badgeText = '🔒 Locked'; statusIcon = '🔒';
+      badgeClass = 'badge-locked'; badgeText = 'Locked'; statusIcon = '';
     } else {
-      badgeClass = 'badge-unlocked'; badgeText = '▶️ Available'; statusIcon = '▶️';
+      badgeClass = 'badge-unlocked'; badgeText = 'Available'; statusIcon = '';
     }
 
     const diffClass = ch.difficulty === 'Beginner' ? 'diff-beginner' : 'diff-intermediate';
@@ -46,19 +46,19 @@ function renderChaptersList(prog) {
     item.innerHTML = `
       <div class="cl-num">${isCompleted ? '✓' : ch.id}</div>
       <div class="cl-body">
-        <div class="cl-title">${ch.icon} Chapter ${ch.id}: ${ch.title}</div>
+        <div class="cl-title">Chapter ${ch.id}: ${ch.title}</div>
         <div class="cl-overview">${ch.overview}</div>
         <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
           <span class="ch-difficulty ${diffClass}">${ch.difficulty}</span>
           <span style="font-size:0.75rem;color:var(--text-3);">${ch.sections.length} sections</span>
-          ${ch.video ? `<span class="ch-video-tag" title="Includes Video Masterclass (${ch.video.duration})">🎬 ${ch.video.duration}</span>` : ''}
+          ${ch.video ? `<span class="ch-video-tag" title="Includes Video Masterclass (${ch.video.duration})"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:3px"><polygon points="5 3 19 12 5 21 5 3"/></svg>${ch.video.duration}</span>` : ''}
           ${scoreText ? `<span class="cl-score">${scoreText}${attemptsText}</span>` : ''}
         </div>
       </div>
       <div class="cl-right">
         <span class="cl-badge ${badgeClass}">${badgeText}</span>
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;">
-          ${!isLocked && ch.video ? `<button class="btn-video-preview" onclick="event.stopPropagation(); openVideoModal(${ch.id})" title="Watch Video Masterclass">🎬 Video</button>` : ''}
+          ${!isLocked && ch.video ? `<button class="btn-video-preview" onclick="event.stopPropagation(); openVideoModal(${ch.id})" title="Watch Video Masterclass"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><polygon points="5 3 19 12 5 21 5 3"/></svg>Video</button>` : ''}
           ${!isLocked ? `<button class="btn-primary" style="padding:8px 18px;font-size:0.8rem;" onclick="openChapter(${ch.id})">${isCompleted ? 'Review' : 'Start'} →</button>` : ''}
         </div>
       </div>
@@ -107,7 +107,7 @@ function openVideoModal(chId) {
 
   if (title) title.textContent = `Ch.${ch.id}: ${ch.title}`;
   if (videoName) videoName.textContent = ch.video.title;
-  if (meta) meta.textContent = `By ${ch.video.channel} • ⏱️ ${ch.video.duration}`;
+  if (meta) meta.textContent = `By ${ch.video.channel} • ${ch.video.duration}`;
   if (ytLink) ytLink.href = ch.video.url;
 
   if (iframe) {

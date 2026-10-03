@@ -131,7 +131,7 @@ function initCircuitSource() {
 
         const badge = document.getElementById('circuitSourceBadge');
         if (badge) {
-          badge.textContent = '⚡ Transferred from Circuit Lab';
+          badge.textContent = 'Transferred from Circuit Lab';
           badge.className = 'sim-badge badge-active-source';
         }
         const title = document.getElementById('currentCircuitTitle');
@@ -196,7 +196,7 @@ function loadPreset(presetKey) {
 
   const badge = document.getElementById('circuitSourceBadge');
   if (badge) {
-    badge.textContent = `📚 Preset: ${preset.name.split(' ')[0]}`;
+    badge.textContent = `Preset: ${preset.name.split(' ')[0]}`;
     badge.className = 'sim-badge';
   }
   const title = document.getElementById('currentCircuitTitle');
@@ -264,7 +264,7 @@ function renderCircuitPreview() {
         } else if (item.gate === 'SWAP') {
           cell.innerHTML = `<span class="strip-gate strip-swap" title="SWAP on q${q}">✕</span>`;
         } else if (item.gate === 'M') {
-          cell.innerHTML = `<span class="strip-gate strip-m" title="Measurement">📊</span>`;
+          cell.innerHTML = `<span class="strip-gate strip-m" title="Measurement">M</span>`;
         } else {
           cell.innerHTML = `<span class="strip-gate strip-1q" title="${item.gate} Gate on q${q}">${item.gate}</span>`;
         }
@@ -388,7 +388,7 @@ function renderSingleResult(res) {
     errorCallout.classList.add('hidden');
     visualGrid.classList.remove('hidden');
   } else if (res.status === 'UNAVAILABLE') {
-    statusEl.innerHTML = `<span class="status-pill status-warn">⚠️ UNAVAILABLE</span>`;
+    statusEl.innerHTML = `<span class="status-pill status-warn">UNAVAILABLE</span>`;
     document.getElementById('resExecutionTime').textContent = 'Configuration required';
     document.getElementById('errorCalloutTitle').textContent = `${res.backend} Unavailable`;
     document.getElementById('errorCalloutMessage').textContent = res.message || 'Adapter credentials are not configured.';
@@ -396,7 +396,7 @@ function renderSingleResult(res) {
     visualGrid.classList.add('hidden');
   } else {
     // ERROR
-    statusEl.innerHTML = `<span class="status-pill status-error">✖ ERROR</span>`;
+    statusEl.innerHTML = `<span class="status-pill status-error">ERROR</span>`;
     document.getElementById('resExecutionTime').textContent = 'Failed';
     document.getElementById('errorCalloutTitle').textContent = `Simulation Error`;
     document.getElementById('errorCalloutMessage').textContent = res.message || res.error || 'Execution failed';
@@ -544,7 +544,7 @@ function copyBackendCode() {
   navigator.clipboard.writeText(codeEl.textContent).then(() => {
     if (btn) {
       const orig = btn.innerHTML;
-      btn.innerHTML = '<span>✅ Copied!</span>';
+      btn.innerHTML = '<span>Copied!</span>';
       setTimeout(() => { btn.innerHTML = orig; }, 1800);
     }
   });
@@ -768,7 +768,7 @@ function saveQbraidCredentials() {
   if (val) {
     localStorage.setItem('quantnexus_qbraid_api_key', val);
     localStorage.setItem('quantnexus_qbraid_device', dev);
-    alert('✅ qBraid API credentials saved successfully in browser storage.');
+    alert('qBraid API credentials saved successfully in browser storage.');
   } else {
     localStorage.removeItem('quantnexus_qbraid_api_key');
   }
@@ -799,10 +799,10 @@ function toggleApiKeyVisibility() {
 
   if (input.type === 'password') {
     input.type = 'text';
-    if (btn) btn.textContent = '🔒';
+    if (btn) btn.textContent = 'Hide';
   } else {
     input.type = 'password';
-    if (btn) btn.textContent = '👁️';
+    if (btn) btn.textContent = 'Show';
   }
 }
 
@@ -816,9 +816,9 @@ function showNotification(text, type = 'info') {
   bar.className = `sim-notification-bar ${type}`;
   if (txt) txt.textContent = text;
   if (icon) {
-    if (type === 'running') icon.textContent = '⏳';
-    else if (type === 'error') icon.textContent = '⚠️';
-    else icon.textContent = 'ℹ️';
+    if (type === 'running') icon.textContent = '●';
+    else if (type === 'error') icon.textContent = '!';
+    else icon.textContent = '●';
   }
   bar.classList.remove('hidden');
 }

@@ -14,7 +14,7 @@ function renderDashboard(user, prog) {
   // Welcome heading
   const hour = new Date().getHours();
   const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-  document.getElementById('welcomeHeading').textContent = `${greeting}, ${user.name.split(' ')[0]}! 👋`;
+  document.getElementById('welcomeHeading').textContent = `${greeting}, ${user.name.split(' ')[0]}!`;
 
   const totalChapters = CHAPTERS_DATA.length;
   const completed = Object.values(prog).filter(p => p.status === 'completed').length;
@@ -43,7 +43,7 @@ function renderDashboard(user, prog) {
 
   // Subtext
   if (completed === totalChapters) {
-    document.getElementById('welcomeSubtext').textContent = '🎉 You completed all 20 chapters! Outstanding work!';
+    document.getElementById('welcomeSubtext').textContent = 'You completed all 20 chapters! Outstanding work!';
   } else if (completed === 0) {
     document.getElementById('welcomeSubtext').textContent = 'Start your quantum journey — Chapter 1 is ready for you!';
   } else {
@@ -70,11 +70,11 @@ function renderDashboard(user, prog) {
   if (nextChapter) {
     continueSection.innerHTML = `
       <a href="learn.html?chapter=${nextChapter.id}" class="continue-btn">
-        ${nextChapter.icon} Continue: Chapter ${nextChapter.id} — ${nextChapter.title}
+        Continue: Chapter ${nextChapter.id} — ${nextChapter.title}
         <span style="margin-left:4px">→</span>
       </a>`;
   } else if (completed === totalChapters) {
-    continueSection.innerHTML = `<div class="continue-btn" style="background:linear-gradient(135deg,#10b981,#06b6d4)">🏆 All 20 Chapters Complete! Congratulations!</div>`;
+    continueSection.innerHTML = `<div class="continue-btn" style="background:linear-gradient(135deg,#10b981,#06b6d4)">All 20 Chapters Complete! Congratulations!</div>`;
   }
 
   // Chapters grid
@@ -86,7 +86,11 @@ function renderDashboard(user, prog) {
     const isLocked = s.status === 'locked';
     const isUnlocked = s.status === 'unlocked';
 
-    const statusIcon = isCompleted ? '✅' : isLocked ? '🔒' : '▶️';
+    const statusIcon = isCompleted
+      ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>'
+      : isLocked
+      ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>'
+      : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
     const diffClass = getDifficultyClass(ch.difficulty);
     const scoreText = s.quizScore !== null ? `Quiz: ${s.quizScore}%` : '';
 
@@ -97,11 +101,11 @@ function renderDashboard(user, prog) {
         <div class="ch-num">${ch.id}</div>
         <div class="ch-status-icon">${statusIcon}</div>
       </div>
-      <div class="ch-title">${ch.icon} ${ch.title}</div>
+      <div class="ch-title">${ch.title}</div>
       <div class="ch-overview">${ch.overview.substring(0, 90)}...</div>
       <div class="ch-footer">
         <span class="ch-difficulty ${diffClass}">${ch.difficulty}</span>
-        ${ch.video ? `<span class="ch-video-pill" title="Video Masterclass (${ch.video.duration})">🎬 ${ch.video.duration}</span>` : ''}
+        ${ch.video ? `<span class="ch-video-pill" title="Video Masterclass (${ch.video.duration})"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:3px"><polygon points="5 3 19 12 5 21 5 3"/></svg>${ch.video.duration}</span>` : ''}
         <span class="ch-score">${scoreText}</span>
       </div>
     `;

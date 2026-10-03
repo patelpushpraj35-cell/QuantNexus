@@ -801,7 +801,7 @@ function parseQuantumCode(code) {
 function showCodeError(msg, line) {
   const errBox = document.getElementById('codeErrorBox');
   if (errBox) {
-    errBox.innerHTML = `⚠️ <strong>Line ${line || '?'}:</strong> ${msg}`;
+    errBox.innerHTML = `<strong>Line ${line || '?'}:</strong> ${msg}`;
     errBox.classList.remove('hidden');
   }
 }
@@ -1084,7 +1084,7 @@ function renderSavedCircuitsList() {
   const sel = document.getElementById('savedCircuitsSelect');
   if (!sel) return;
   const saved = JSON.parse(localStorage.getItem('qn_saved_circuits') || '[]');
-  sel.innerHTML = `<option value="">📂 Load Saved Circuit (${saved.length})</option>`;
+  sel.innerHTML = `<option value="">Load Saved Circuit (${saved.length})</option>`;
   saved.forEach(c => {
     const opt = document.createElement('option');
     opt.value = c.id;

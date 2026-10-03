@@ -119,10 +119,10 @@ function renderAdminUsersTable(filterList = null) {
       <td>
         <div class="action-btn-group">
           <button class="btn-table-action" onclick="toggleUserStatus('${u.id}')" title="Toggle active/suspended">
-            ${u.status === 'Active' ? '⏸️ Suspend' : '▶️ Activate'}
+            ${u.status === 'Active' ? 'Suspend' : 'Activate'}
           </button>
           <button class="btn-table-action" style="color:var(--danger);" onclick="deleteUser('${u.id}')" title="Delete user">
-            🗑️ Delete
+            Delete
           </button>
         </div>
       </td>
@@ -164,7 +164,7 @@ function changeUserRole(userId, newRole) {
 
   addAuditLog('ROLE_CHANGE', `Admin changed role of ${user.name} (${user.email}) from ${oldRole.toUpperCase()} to ${newRole.toUpperCase()}.`);
   renderAdminUsersTable();
-  alert(`✅ Updated ${user.name}'s role to ${newRole.toUpperCase()}!`);
+  alert(`Updated ${user.name}'s role to ${newRole.toUpperCase()}!`);
 }
 
 function toggleUserStatus(userId) {
@@ -230,7 +230,7 @@ function handleAdminCreateUser(e) {
 
   closeAddUserModal();
   renderAdminUsersTable();
-  alert(`✅ Created user account for ${name} (${role.toUpperCase()})!`);
+  alert(`Created user account for ${name} (${role.toUpperCase()})!`);
 }
 
 // ── Quantum Backends Telemetry ──
@@ -329,7 +329,7 @@ function renderBackendsTelemetry() {
 
 function pingAllBackends() {
   renderBackendsTelemetry();
-  alert('🔄 All local and cloud backend telemetry refreshed.');
+  alert('All local and cloud backend telemetry refreshed.');
 }
 
 function saveBackendPolicy() {
@@ -338,7 +338,7 @@ function saveBackendPolicy() {
   localStorage.setItem('qn_max_shots', maxShots);
   localStorage.setItem('qn_default_backend', defBackend);
   addAuditLog('POLICY_UPDATE', `Simulation policy updated: Max shots=${maxShots}, Default backend=${defBackend}`);
-  alert('✅ Global simulation engine policy saved.');
+  alert('Global simulation engine policy saved.');
 }
 
 // ── Platform Settings & Maintenance ──
@@ -348,7 +348,7 @@ function savePlatformSettings() {
   localStorage.setItem('qn_platform_title', title);
   localStorage.setItem('qn_allow_registration', reg);
   addAuditLog('CONFIG_UPDATE', `Platform settings updated: Title="${title}", Registration=${reg}`);
-  alert('✅ Platform settings saved successfully.');
+  alert('Platform settings saved successfully.');
 }
 
 function exportFullSystemBackup() {
@@ -381,12 +381,12 @@ function resetToFactoryDataset() {
     renderAdminUsersTable();
     renderBackendsTelemetry();
     renderAuditLogs();
-    alert('✅ Factory demo state restored successfully.');
+    alert('Factory demo state restored successfully.');
   }
 }
 
 function clearPlatformLocalStorage() {
-  if (confirm('⚠️ WARNING: This will clear all QuantNexus local storage data and log you out. Continue?')) {
+  if (confirm('WARNING: This will clear all QuantNexus local storage data and log you out. Continue?')) {
     localStorage.clear();
     window.location.href = 'index.html';
   }

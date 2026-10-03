@@ -1125,7 +1125,7 @@ img { max-width: 100%; }
   border-bottom: 1px solid var(--border-light);
 }
 .takeaways-card li:last-child { border-bottom: none; }
-.takeaways-card li::before { content: '🌟'; position: absolute; left: 0; }
+.takeaways-card li::before { content: '•'; position: absolute; left: 6px; color: var(--primary-light); font-weight: bold; font-size: 1.1rem; }
 .btn-cta {
   margin-top: 20px;
   background: linear-gradient(135deg, var(--success), var(--accent));

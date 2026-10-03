@@ -94,7 +94,7 @@ function renderChapterVideo(ch) {
   card.style.display = 'block';
   if (watchBtn) {
     watchBtn.style.display = 'inline-flex';
-    watchBtn.innerHTML = `🎬 Watch Video (${video.duration || 'Video'})`;
+    watchBtn.innerHTML = `Watch Video (${video.duration || 'Video'})`;
   }
 
   const iframe = document.getElementById('chapterVideoIframe');
@@ -107,7 +107,7 @@ function renderChapterVideo(ch) {
   if (authorEl) authorEl.textContent = video.channel || 'Featured Educator';
 
   const durationEl = document.getElementById('videoDuration');
-  if (durationEl) durationEl.textContent = `⏱️ ${video.duration || 'Watch'}`;
+  if (durationEl) durationEl.textContent = `${video.duration || 'Watch'}`;
 
   const titleEl = document.getElementById('videoTitle');
   if (titleEl) titleEl.textContent = video.title || `${ch.title} Video Masterclass`;
@@ -246,18 +246,18 @@ function renderSection(index) {
 
       ${sec.analogy ? `
       <div class="example-box">
-        <div class="example-label">💡 Analogy</div>
+        <div class="example-label">Analogy</div>
         <div class="example-text">${sec.analogy}</div>
       </div>` : ''}
 
       ${sec.example ? `
       <div class="example-box" style="border-color:rgba(124,58,237,0.25);background:rgba(124,58,237,0.06);">
-        <div class="example-label" style="color:var(--primary-light);">🔬 Example</div>
+        <div class="example-label" style="color:var(--primary-light);">Example</div>
         <div class="example-text" style="font-family:inherit;">${formatExample(sec.example)}</div>
       </div>` : ''}
 
       <div class="concept-box">
-        <div class="concept-box-title">📌 Key Concepts</div>
+        <div class="concept-box-title">Key Concepts</div>
         ${interactiveHTML}
       </div>
     </div>
@@ -281,7 +281,7 @@ function escHtml(str) {
 
 function buildFlipCards(points) {
   if (!points || !points.length) return '';
-  const hint = `<p class="flip-hint">🖱️ Click a card to reveal its explanation</p>`;
+  const hint = `<p class="flip-hint">Click a card to reveal its explanation</p>`;
   const cards = points.map(p => {
     const term = typeof p === 'string' ? p : p.term;
     const detail = typeof p === 'string' ? 'A key concept in this section.' : p.detail;
@@ -338,7 +338,7 @@ function showTakeaways() {
   document.getElementById('chapterProgressFill').style.width = '100%';
 
   // Update next button
-  document.getElementById('nextSectionBtn').textContent = 'Take the Quiz ⚡';
+  document.getElementById('nextSectionBtn').textContent = 'Take the Quiz →';
   document.getElementById('nextSectionBtn').onclick = goToQuiz;
 }
 
@@ -368,7 +368,9 @@ function renderQuizModal(qIndex) {
 
   modal.innerHTML = `
     <div class="quiz-header">
-      <div class="quiz-icon">⚡</div>
+      <div class="quiz-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
       <div class="quiz-title">Chapter ${currentChapter.id} Quiz</div>
       <div class="quiz-subtitle">${currentChapter.title}</div>
     </div>
@@ -395,9 +397,9 @@ function renderQuizModal(qIndex) {
     <div class="quiz-feedback hidden" id="quizFeedback"></div>
 
     <div class="quiz-footer">
-      <button class="btn-secondary" onclick="closeQuiz()">✕ Exit</button>
+      <button class="btn-secondary" onclick="closeQuiz()">Exit</button>
       <button class="btn-primary" id="quizNextBtn" onclick="nextQuestion()" disabled>
-        ${qIndex < total - 1 ? 'Next Question →' : 'See Results 🏆'}
+        ${qIndex < total - 1 ? 'Next Question →' : 'See Results →'}
       </button>
     </div>
   `;
@@ -429,10 +431,10 @@ function selectOption(index) {
   fb.classList.remove('hidden');
   if (index === q.answer) {
     fb.className = 'quiz-feedback correct';
-    fb.textContent = `✅ Correct! ${q.explanation}`;
+    fb.textContent = `Correct! ${q.explanation}`;
   } else {
     fb.className = 'quiz-feedback wrong';
-    fb.textContent = `❌ Not quite. ${q.explanation}`;
+    fb.textContent = `Not quite. ${q.explanation}`;
   }
 
   // Enable next
@@ -477,7 +479,9 @@ function showResults() {
   // Render result modal
   const circumference = 2 * Math.PI * 45;
   const strokeColor = score >= 80 ? '#10b981' : score >= 60 ? '#f59e0b' : '#ef4444';
-  const resultIcon = score === 100 ? '🌟' : passed ? '🎉' : '😅';
+  const resultIcon = passed
+    ? '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>'
+    : '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
   const resultTitle = score === 100 ? 'Perfect Score!' : passed ? 'Chapter Complete!' : 'Keep Going!';
 
   const modal = document.getElementById('resultModal');
@@ -521,8 +525,8 @@ function showResults() {
     </div>
 
     ${passed
-      ? `<p class="result-pass-msg">✅ Passed with ${score}%! Chapter ${currentChapter.id} completed. ${nextId <= totalChapters ? `Chapter ${nextId} is now unlocked!` : 'You have completed the entire 20-chapter course! 🎓'}</p>`
-      : `<p class="result-fail-msg">⚠️ You scored ${score}%. A minimum of 60% is required to pass and unlock Chapter ${nextId <= totalChapters ? nextId : totalChapters}. Review the key concepts and try again!</p>`
+      ? `<p class="result-pass-msg">Passed with ${score}%! Chapter ${currentChapter.id} completed. ${nextId <= totalChapters ? `Chapter ${nextId} is now unlocked!` : 'You have completed the entire 20-chapter course!'}</p>`
+      : `<p class="result-fail-msg">You scored ${score}%. A minimum of 60% is required to pass and unlock Chapter ${nextId <= totalChapters ? nextId : totalChapters}. Review the key concepts and try again!</p>`
     }
 
     <div class="result-btns">

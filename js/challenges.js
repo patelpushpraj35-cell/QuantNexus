@@ -19,7 +19,7 @@ const QUANTUM_CHALLENGES = [
     title: 'Hello Qubit',
     difficulty: 'Beginner',
     points: 100,
-    icon: '🔵',
+    icon: '',
     objective: 'Understand the basic structure of a Qiskit quantum circuit with one qubit.',
     description: 'Create a 1-qubit quantum circuit, apply no gates (leave the qubit in its default |0⟩ state), add a measurement, and run it for 1024 shots. The qubit starts in state |0⟩, so all measurements should return "0".',
     expected: 'All measurements should return "0". Expected distribution: {"0": ~1024 counts}',
@@ -62,7 +62,7 @@ print("Counts:", counts)
     title: 'Apply an X Gate',
     difficulty: 'Beginner',
     points: 100,
-    icon: '🔴',
+    icon: '',
     objective: 'Learn the Pauli-X (NOT) gate — the quantum equivalent of a classical bit flip.',
     description: 'Create a 1-qubit circuit. Apply an X gate to qubit 0, then measure. The X gate flips |0⟩ to |1⟩, so all 1024 measurements should return "1".',
     expected: 'All measurements should return "1". Expected distribution: {"1": ~1024 counts}',
@@ -105,7 +105,7 @@ print("Counts:", counts)
     title: 'Superposition with H Gate',
     difficulty: 'Beginner',
     points: 150,
-    icon: '⚖️',
+    icon: '',
     objective: 'Understand quantum superposition using the Hadamard gate.',
     description: 'Create a 1-qubit circuit. Apply a Hadamard (H) gate to qubit 0, then measure for 1024 shots. The H gate puts the qubit into an equal superposition of |0⟩ and |1⟩, so you should see roughly 50% "0" and 50% "1" measurements.',
     expected: 'Roughly equal split: {"0": ~512, "1": ~512}. Accept any result where each outcome is 40%–60% of total shots.',
@@ -151,7 +151,7 @@ print("Counts:", counts)
     title: 'Measure Multiple Qubits',
     difficulty: 'Beginner',
     points: 150,
-    icon: '📏',
+    icon: '',
     objective: 'Learn how to create multi-qubit circuits and measure all qubits simultaneously.',
     description: 'Create a 2-qubit circuit. Apply an X gate to qubit 0 only (leave qubit 1 as |0⟩). Measure both qubits. You should see all shots give outcome "01" (qubit 1 = 0, qubit 0 = 1 in little-endian Qiskit notation).',
     expected: 'All measurements: "01" (qubit 0 flipped, qubit 1 unchanged). Expected: {"01": ~1024}',
@@ -197,7 +197,7 @@ print("Counts:", counts)
     title: 'Bell State',
     difficulty: 'Intermediate',
     points: 200,
-    icon: '🔔',
+    icon: '',
     objective: 'Create quantum entanglement using a Bell state — one of the most fundamental states in quantum computing.',
     description: 'Create a 2-qubit circuit. Apply H to qubit 0, then a CNOT gate with qubit 0 as control and qubit 1 as target. Measure both qubits. The result is a Bell state (|00⟩ + |11⟩)/√2 — you should see roughly 50% "00" and 50% "11" with NO "01" or "10" outcomes.',
     expected: 'Only "00" and "11" outcomes, each ~50%. Expected: {"00": ~512, "11": ~512}. No "01" or "10" at all.',
@@ -258,7 +258,7 @@ print("Counts:", counts)
     title: 'GHZ State (3 Qubits)',
     difficulty: 'Intermediate',
     points: 250,
-    icon: '🔗',
+    icon: '',
     objective: 'Extend entanglement to three qubits by creating a GHZ (Greenberger–Horne–Zeilinger) state.',
     description: 'Create a 3-qubit circuit. Apply H to qubit 0, then CNOT from qubit 0 to qubit 1, and another CNOT from qubit 0 to qubit 2. Measure all three qubits. The GHZ state (|000⟩ + |111⟩)/√2 should give ~50% "000" and ~50% "111" with no other outcomes.',
     expected: 'Only "000" and "111" outcomes, each ~50%. Expected: {"000": ~512, "111": ~512}',
@@ -318,7 +318,7 @@ print("Counts:", counts)
     title: 'Quantum Teleportation Setup',
     difficulty: 'Intermediate',
     points: 300,
-    icon: '📡',
+    icon: '',
     objective: 'Understand quantum teleportation by preparing a Bell pair (entangled resource state).',
     description: 'Prepare a Bell pair between qubits 1 and 2 (the resource state for teleportation). Then apply an X gate to qubit 0 (the state to teleport). Apply CNOT(0, 1) and H(0) to perform Bell measurement. Measure all three qubits. Valid teleportation setups produce all 4 two-qubit measurement outcomes for qubits 0 and 1, each with ~25% probability.',
     expected: 'Four outcomes each ~25%: "000", "001", "010", "011" (or "100","101","110","111" patterns — any where qubits 0&1 each occur ~25% independently).',
@@ -380,7 +380,7 @@ print("Counts:", counts)
     title: 'Grover Search (2-Qubit)',
     difficulty: 'Advanced',
     points: 400,
-    icon: '🔍',
+    icon: '',
     objective: 'Implement a simplified Grover\'s search algorithm to find a marked element with quadratic speedup.',
     description: 'Implement Grover\'s algorithm for 2 qubits searching for the state |11⟩. Steps: (1) Apply H to both qubits. (2) Oracle: Apply Z to both qubits, then CZ (simulate with H, CX, H) to mark |11⟩. (3) Diffusion: Apply H to both, X to both, CZ, X to both, H to both. (4) Measure. The state |11⟩ should appear with >70% probability.',
     expected: '"11" (or "11" in big-endian) should appear with >70% probability after one Grover iteration.',
@@ -444,7 +444,7 @@ print("Counts:", counts)
     title: 'Deutsch-Jozsa Algorithm',
     difficulty: 'Advanced',
     points: 400,
-    icon: '🧮',
+    icon: '',
     objective: 'Implement the Deutsch-Jozsa algorithm to determine if a function is constant or balanced in one query.',
     description: 'For a 2-bit Deutsch-Jozsa problem: use 2 input qubits and 1 ancilla qubit. Apply H to input qubits, set ancilla to |−⟩ (X then H), apply the oracle (implement the balanced function: CNOT from qubit 0 to ancilla, CNOT from qubit 1 to ancilla), apply H to input qubits again, measure input qubits. A balanced function should give "11" (both inputs measured as 1).',
     expected: 'Measuring "11" on the two input qubits indicates the function is balanced. Expected: {"11": ~1024}',
@@ -506,7 +506,7 @@ print("Counts:", counts)
     title: 'Phase Kickback Puzzle',
     difficulty: 'Expert',
     points: 500,
-    icon: '👻',
+    icon: '',
     objective: 'Understand quantum phase kickback — a key technique used in many quantum algorithms.',
     description: 'Phase kickback occurs when a target qubit in an eigenstate kicks a phase back to the control qubit. Set up: Initialize qubit 0 in |+⟩ (H gate), initialize qubit 1 in |−⟩ (X then H). Apply CNOT with control=0, target=1. Then measure only qubit 0 (after applying H). If phase kickback works, qubit 0 will be flipped to |1⟩ (measuring "1" with high probability). This demonstrates how the oracle in Grover\'s algorithm works.',
     expected: 'After H+X+H on qubit 1, CNOT, then H on qubit 0 — measuring qubit 0 should give "1" with ~100% probability.',
@@ -626,13 +626,13 @@ function renderChallengeList() {
     item.id = `ch-item-${ch.id}`;
     item.onclick = () => loadChallenge(ch.id);
 
-    const statusIcon = isSolved ? '✅' : (prog.status === 'attempted' ? '🔄' : '○');
+    const statusIcon = isSolved ? '✓' : (prog.status === 'attempted' ? '●' : '○');
     const scoreText = prog.score > 0 ? `+${prog.score}pts` : '';
 
     item.innerHTML = `
       <div class="ch-item-num">${ch.id}</div>
       <div class="ch-item-body">
-        <div class="ch-item-title">${ch.icon} ${ch.title}</div>
+        <div class="ch-item-title">${ch.title}</div>
         <div class="ch-item-meta">
           <span class="ch-item-diff diff-${ch.difficulty.toLowerCase()}">${ch.difficulty}</span>
           ${scoreText ? `<span class="ch-item-score">${scoreText}</span>` : ''}
@@ -685,17 +685,17 @@ function loadChallenge(id) {
 
   const statusBadge = document.getElementById('chStatusBadge');
   if (prog.status === 'passed') {
-    statusBadge.textContent = '✅ Passed';
+    statusBadge.textContent = 'Passed';
     statusBadge.className = 'ch-status-badge status-passed';
   } else if (prog.status === 'attempted') {
-    statusBadge.textContent = '🔄 Attempted';
+    statusBadge.textContent = 'Attempted';
     statusBadge.className = 'ch-status-badge status-attempted';
   } else {
     statusBadge.textContent = 'Not Started';
     statusBadge.className = 'ch-status-badge status-not-started';
   }
 
-  document.getElementById('chDetailTitle').textContent = `${ch.icon} ${ch.title}`;
+  document.getElementById('chDetailTitle').textContent = ch.title;
   document.getElementById('chDetailDesc').textContent = `${ch.points} points · ${ch.difficulty}`;
 
   // Show problem content
@@ -1011,7 +1011,7 @@ function runCode() {
 
   const btnRun = document.getElementById('btnRun');
   btnRun.disabled = true;
-  btnRun.textContent = '⏳ Running...';
+  btnRun.textContent = 'Running...';
 
   // Simulate async execution
   setTimeout(() => {
@@ -1025,7 +1025,7 @@ function runCode() {
 
       // Show parse warnings/errors
       if (parsed.errors.length > 0) {
-        parsed.errors.forEach(err => appendOutput('⚠ ' + err, 'out-warn'));
+        parsed.errors.forEach(err => appendOutput('[Warning] ' + err, 'out-warn'));
         appendOutputDivider();
       }
 
@@ -1061,7 +1061,7 @@ function runCode() {
       });
 
       appendOutputDivider();
-      appendOutput('✓ Execution complete.', 'out-success');
+      appendOutput('Execution complete.', 'out-success');
 
     } catch (err) {
       appendOutput('ERROR: ' + err.message, 'out-error');
@@ -1069,7 +1069,7 @@ function runCode() {
     }
 
     btnRun.disabled = false;
-    btnRun.textContent = '▶ Run Code';
+    btnRun.textContent = 'Run Code';
   }, 600 + Math.random() * 400);
 }
 
@@ -1095,7 +1095,7 @@ function submitCode() {
 
   const btnSubmit = document.getElementById('btnSubmit');
   btnSubmit.disabled = true;
-  btnSubmit.textContent = '⏳ Grading...';
+  btnSubmit.textContent = 'Grading...';
 
   setTimeout(() => {
     try {
@@ -1105,7 +1105,7 @@ function submitCode() {
       const parsed = parseQiskitCode(code);
 
       if (parsed.errors.length > 0) {
-        parsed.errors.forEach(err => appendOutput('⚠ ' + err, 'out-warn'));
+        parsed.errors.forEach(err => appendOutput('[Warning] ' + err, 'out-warn'));
       }
 
       appendOutput(`Circuit: ${parsed.numQubits} qubit(s), ${parsed.ops.length} gate(s)`, 'out-info');
@@ -1125,7 +1125,7 @@ function submitCode() {
       const gradeResult = ch.grader(parsed.ops, parsed.numQubits, gradingParsed.numShots, simResult.counts);
 
       if (gradeResult.pass) {
-        appendOutput('✅ PASSED!', 'out-success');
+        appendOutput('PASSED!', 'out-success');
         appendOutput(gradeResult.message, 'out-success');
         appendOutputDivider();
         appendOutput(`Score: +${gradeResult.score} points`, 'out-success');
@@ -1147,7 +1147,7 @@ function submitCode() {
         updateChallengesDashboardWidget();
 
       } else {
-        appendOutput('✗ NOT PASSED', 'out-error');
+        appendOutput('NOT PASSED', 'out-error');
         appendOutput(gradeResult.message, 'out-warn');
         appendOutputDivider();
         appendOutput('Review the problem description and hints, then try again.', 'out-info');
@@ -1170,7 +1170,7 @@ function submitCode() {
     }
 
     btnSubmit.disabled = false;
-    btnSubmit.textContent = '✓ Submit';
+    btnSubmit.textContent = 'Submit';
   }, 800 + Math.random() * 600);
 }
 
@@ -1183,10 +1183,10 @@ function showResultCard(pass, score, message, isNew) {
   card.classList.remove('hidden', 'result-pass', 'result-fail');
   card.classList.add(pass ? 'result-pass' : 'result-fail');
 
-  document.getElementById('resultIcon').textContent = pass ? '✅' : '❌';
+  document.getElementById('resultIcon').textContent = pass ? '✓' : '✗';
   document.getElementById('resultTitle').textContent = pass
-    ? (isNew ? '🎉 Challenge Passed!' : '✅ Already Solved — Passed Again!')
-    : '❌ Not Passed Yet';
+    ? (isNew ? 'Challenge Passed!' : 'Already Solved — Passed Again!')
+    : 'Not Passed Yet';
   document.getElementById('resultDetail').textContent = message;
   document.getElementById('resultScore').textContent = pass ? `+${score}` : '';
 }
@@ -1195,10 +1195,10 @@ function updateStatusBadge(status) {
   const badge = document.getElementById('chStatusBadge');
   if (!badge) return;
   if (status === 'passed') {
-    badge.textContent = '✅ Passed';
+    badge.textContent = 'Passed';
     badge.className = 'ch-status-badge status-passed';
   } else if (status === 'attempted') {
-    badge.textContent = '🔄 Attempted';
+    badge.textContent = 'Attempted';
     badge.className = 'ch-status-badge status-attempted';
   }
 }

@@ -16,7 +16,9 @@
   <!-- Floating Theme Toggle -->
   <div class="auth-theme-wrapper">
     <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
-      <span class="theme-icon">🌙</span>
+      <span class="theme-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </span>
       <span class="theme-label">Dark</span>
     </button>
   </div>
@@ -30,7 +32,13 @@
   <div class="auth-container" id="authContainer">
 
     <div class="auth-brand">
-      <div class="brand-icon">⚛️</div>
+      <div class="brand-icon">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--primary-light)">
+          <circle cx="12" cy="12" r="3"></circle>
+          <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"></ellipse>
+          <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-30 12 12)"></ellipse>
+        </svg>
+      </div>
       <h1 class="brand-name">QuantNexus</h1>
       <p class="brand-tagline">Quantum Computing Learning Platform</p>
       <span class="brand-badge">SIH 26140</span>
@@ -56,16 +64,16 @@
         <span class="btn-arrow">→</span>
       </button>
       <div class="quick-demo-roles">
-        <div class="quick-demo-title">⚡ 1-Click Role Login:</div>
+        <div class="quick-demo-title">1-Click Role Login:</div>
         <div class="quick-demo-btns">
           <button type="button" class="btn-demo-role" onclick="quickRoleLogin('student')" title="Log in as Student">
-            👨‍🎓 Student
+            Student
           </button>
           <button type="button" class="btn-demo-role" onclick="quickRoleLogin('instructor')" title="Log in as Instructor">
-            👩‍🏫 Instructor
+            Instructor
           </button>
           <button type="button" class="btn-demo-role" onclick="quickRoleLogin('admin')" title="Log in as Administrator">
-            🛡️ Admin
+            Admin
           </button>
         </div>
       </div>
@@ -103,10 +111,10 @@
   </div>
 
   <div class="auth-features">
-    <div class="feature-pill">🎯 20 Structured Chapters</div>
-    <div class="feature-pill">⚡ Interactive Quizzes</div>
-    <div class="feature-pill">📊 Progress Tracking</div>
-    <div class="feature-pill">🔓 Sequential Unlocking</div>
+    <div class="feature-pill">20 Structured Chapters</div>
+    <div class="feature-pill">Interactive Quizzes</div>
+    <div class="feature-pill">Progress Tracking</div>
+    <div class="feature-pill">Sequential Unlocking</div>
   </div>
 
   <script src="js/auth.js"></script>

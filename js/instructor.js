@@ -134,8 +134,8 @@ function renderStudentsTable(filterList = null) {
       <td><small style="color:var(--text-3);">${stu.lastActive}</small></td>
       <td>
         <div class="action-btn-group">
-          <button class="btn-table-action" onclick="inspectStudent('${stu.id}')" title="Inspect full chapter breakdown">🔍 Inspect</button>
-          <button class="btn-table-action unlock-btn" onclick="grantChapterUnlock('${stu.id}')" title="Grant next chapter unlock">🔓 Unlock Next</button>
+          <button class="btn-table-action" onclick="inspectStudent('${stu.id}')" title="Inspect full chapter breakdown">Inspect</button>
+          <button class="btn-table-action unlock-btn" onclick="grantChapterUnlock('${stu.id}')" title="Grant next chapter unlock">Unlock Next</button>
         </div>
       </td>
     `;
@@ -197,7 +197,7 @@ function inspectStudent(studentId) {
         <td><strong>Ch. ${c}:</strong> ${chData.title}</td>
         <td>
           <span class="status-pill ${status === 'Completed' ? 'status-success' : (status === 'In Progress' ? 'status-warn' : 'status-locked')}">
-            ${status === 'Completed' ? '✅ Completed' : (status === 'In Progress' ? '⏳ Unlocked' : '🔒 Locked')}
+            ${status === 'Completed' ? 'Completed' : (status === 'In Progress' ? 'Unlocked' : 'Locked')}
           </span>
         </td>
         <td><strong>${typeof score === 'number' ? score + '%' : score}</strong></td>
@@ -245,7 +245,7 @@ function grantChapterUnlock(studentId) {
 
   renderStudentsTable();
   updateCohortKPIs();
-  alert(`✅ Granted Chapter ${stu.currentChapter} unlock for ${stu.name}!`);
+  alert(`Granted Chapter ${stu.currentChapter} unlock for ${stu.name}!`);
 }
 
 function grantSingleChapter(studentId, chapterNum) {
@@ -266,7 +266,7 @@ function grantSingleChapter(studentId, chapterNum) {
 
   inspectStudent(studentId);
   renderStudentsTable();
-  alert(`✅ Unlocked Chapter ${chapterNum} for ${stu.name}.`);
+  alert(`Unlocked Chapter ${chapterNum} for ${stu.name}.`);
 }
 
 // ── Tab 2: Curriculum & Chapters ──
@@ -297,8 +297,8 @@ function renderCurriculumGrid() {
         </div>
       </div>
       <div class="curr-card-actions">
-        <a href="learn.html?chapter=${ch.id}" class="btn-table-action" target="_blank">📖 View Content</a>
-        <a href="circuit-lab.html" class="btn-table-action" target="_blank">⚡ Lab Circuit</a>
+        <a href="learn.html?chapter=${ch.id}" class="btn-table-action" target="_blank">View Content</a>
+        <a href="circuit-lab.html" class="btn-table-action" target="_blank">Lab Circuit</a>
       </div>
     `;
     container.appendChild(card);
@@ -307,7 +307,7 @@ function renderCurriculumGrid() {
 
 function updatePassingThreshold(val) {
   localStorage.setItem('qn_pass_threshold', val);
-  alert(`✅ Minimum quiz passing threshold updated to ${val}%.`);
+  alert(`Minimum quiz passing threshold updated to ${val}%.`);
 }
 
 // ── Tab 3: Circuit Challenges ──
@@ -343,7 +343,7 @@ function renderChallengesList() {
       </div>
       <div class="ch-actions-row">
         <button class="btn-secondary" onclick="alert('Viewing submissions for challenge: ${ch.title}')">Inspect Submissions</button>
-        <button class="btn-primary" onclick="openInCircuitLabForChallenge('${ch.target}')">Open Template in Lab ⚡</button>
+        <button class="btn-primary" onclick="openInCircuitLabForChallenge('${ch.target}')">Open Template in Lab</button>
       </div>
     `;
     container.appendChild(div);
@@ -386,7 +386,7 @@ function handleCreateChallenge(e) {
 
   closeDeployModal();
   renderChallengesList();
-  alert(`🚀 Deployed "${title}" to the student cohort!`);
+  alert(`Deployed "${title}" to the student cohort!`);
 }
 
 function openInCircuitLabForChallenge(target) {

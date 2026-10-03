@@ -8,7 +8,7 @@ const CHAPTERS_DATA = [
     id: 1,
     title: "Introduction to Quantum Computing",
     difficulty: "Beginner",
-    icon: "⚛️",
+    icon: "",
     overview: "Learn what quantum computing is, how it differs from classical computing, and why concepts such as qubits, superposition and entanglement need interactive learning.",
     objectives: [
       "Understand the purpose of quantum computing.",
@@ -89,7 +89,7 @@ const CHAPTERS_DATA = [
     id: 2,
     title: "Qubits and Quantum States",
     difficulty: "Beginner",
-    icon: "🔵",
+    icon: "",
     overview: "Understand the qubit, computational basis states, state representation and the basic idea of a statevector.",
     objectives: [
       "Identify |0⟩ and |1⟩ as computational basis states.",
@@ -177,7 +177,7 @@ const CHAPTERS_DATA = [
     id: 3,
     title: "Superposition and Measurement",
     difficulty: "Beginner",
-    icon: "🌊",
+    icon: "",
     overview: "Learn superposition using simple circuits and understand how measurement and repeated shots produce observable outcome distributions.",
     objectives: [
       "Explain the introductory idea of superposition.",
@@ -277,7 +277,7 @@ const CHAPTERS_DATA = [
     id: 4,
     title: "Quantum Gates and Circuits",
     difficulty: "Beginner",
-    icon: "🔧",
+    icon: "",
     overview: "Learn common quantum gates and how gates are arranged into single- and multi-qubit circuits.",
     objectives: [
       "Recognize and understand common single-qubit and two-qubit gates.",
@@ -403,7 +403,7 @@ const CHAPTERS_DATA = [
     id: 5,
     title: "Entanglement",
     difficulty: "Intermediate",
-    icon: "🔗",
+    icon: "",
     overview: "Learn the introductory concept of entanglement and construct a simple Bell-state circuit.",
     objectives: [
       "Explain entanglement at an introductory level.",
@@ -489,7 +489,7 @@ const CHAPTERS_DATA = [
     id: 6,
     title: "Quantum Circuit Design and Programming",
     difficulty: "Intermediate",
-    icon: "💻",
+    icon: "",
     overview: "Learn how to construct circuits visually and with code, validate them and execute them in the quantum lab.",
     objectives: [
       "Build quantum circuits using a visual drag-and-drop interface.",
@@ -591,7 +591,7 @@ const CHAPTERS_DATA = [
     id: 7,
     title: "Quantum Simulation and Frameworks",
     difficulty: "Intermediate",
-    icon: "🖥️",
+    icon: "",
     overview: "Understand how software simulators execute quantum circuits and how the platform exposes multiple frameworks and backends.",
     objectives: [
       "Understand why software simulation is useful for learning quantum computing.",
@@ -689,7 +689,7 @@ const CHAPTERS_DATA = [
     id: 8,
     title: "Quantum Algorithms",
     difficulty: "Intermediate",
-    icon: "🧮",
+    icon: "",
     overview: "Explore the standard algorithms named in the SIH 26140 problem statement through structured explanations and circuit examples.",
     objectives: [
       "Recognize and understand the four named algorithms: Deutsch-Jozsa, Grover's, QAOA, and VQE.",
@@ -782,7 +782,7 @@ const CHAPTERS_DATA = [
     id: 9,
     title: "Quantum State and Result Visualization",
     difficulty: "Intermediate",
-    icon: "📊",
+    icon: "",
     overview: "Learn to interpret the visual outputs required by the platform: circuit rendering, measurement histograms, statevectors and Bloch sphere views.",
     objectives: [
       "Read and interpret a circuit rendering diagram.",
@@ -881,7 +881,7 @@ const CHAPTERS_DATA = [
     id: 10,
     title: "Assessment, Challenges and Learning Progress",
     difficulty: "Intermediate",
-    icon: "🏆",
+    icon: "",
     overview: "Check your learning through quizzes and challenges, understand grading, and track your overall progress across the platform.",
     objectives: [
       "Successfully complete assessments and challenges.",

@@ -208,7 +208,7 @@ function applyRoleBasedUI(user) {
       btn.href = 'instructor.html';
       btn.className = 'btn-secondary';
       btn.style.cssText = 'border-color:rgba(124,58,237,0.5);color:#c4b5fd;background:rgba(124,58,237,0.15);padding:6px 12px;font-size:0.8rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border-radius:8px;';
-      btn.innerHTML = '<span>🎓 Back to Instructor Panel →</span>';
+      btn.innerHTML = '<span>Back to Instructor Panel →</span>';
       topbarRight.prepend(btn);
     } else if (role === 'admin') {
       const btn = document.createElement('a');
@@ -216,7 +216,7 @@ function applyRoleBasedUI(user) {
       btn.href = 'admin.html';
       btn.className = 'btn-secondary';
       btn.style.cssText = 'border-color:rgba(245,158,11,0.5);color:#fbbf24;background:rgba(245,158,11,0.15);padding:6px 12px;font-size:0.8rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border-radius:8px;';
-      btn.innerHTML = '<span>🛡️ Back to Admin Panel →</span>';
+      btn.innerHTML = '<span>Back to Admin Panel →</span>';
       topbarRight.prepend(btn);
     }
   }
@@ -237,7 +237,7 @@ function requireAuth(allowedRoles = null) {
   if (allowedRoles && Array.isArray(allowedRoles) && !allowedRoles.includes(user.role)) {
     const userRoleStr = (user.role || 'student').toUpperCase();
     const allowedStr = allowedRoles.map(r => r.toUpperCase()).join(' or ');
-    alert(`⛔ Access Restricted!\n\nThis section requires ${allowedStr} permissions.\nYou are currently authenticated as "${userRoleStr}".\n\nRedirecting to your authorized home page...`);
+    alert(`Access Restricted!\n\nThis section requires ${allowedStr} permissions.\nYou are currently authenticated as "${userRoleStr}".\n\nRedirecting to your authorized home page...`);
 
     if (user.role === 'admin') {
       window.location.href = 'admin.html';

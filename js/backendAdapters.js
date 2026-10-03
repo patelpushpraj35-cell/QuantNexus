@@ -686,13 +686,13 @@ class QbraidAdapter extends BaseQuantumAdapter {
         transpiledDepth: 0,
         gateCount: 0,
         error: 'API Credentials Not Configured',
-        message: '⚠️ qBraid Quantum Cloud adapter requires an API key to submit remote execution jobs to cloud-managed quantum devices (e.g. AWS Braket SV1, IBM Quantum, Rigetti via qBraid). Currently UNCONFIGURED. Enter your credentials in qBraid Settings or use the active local simulators (Qiskit Aer, PennyLane, Cirq).',
+        message: 'qBraid Quantum Cloud adapter requires an API key to submit remote execution jobs to cloud-managed quantum devices (e.g. AWS Braket SV1, IBM Quantum, Rigetti via qBraid). Currently UNCONFIGURED. Enter your credentials in qBraid Settings or use the active local simulators (Qiskit Aer, PennyLane, Cirq).',
         details: {
           frameworkVersion: 'qBraid SDK 0.8.2',
           targetDevice: device,
           credentialStatus: 'Missing API Key (quantnexus_qbraid_api_key is empty)',
           availableLocally: false,
-          instructions: 'Click the "⚙️ Configure qBraid" button to set your qBraid API Key and target quantum device, or switch to one of the three local simulators.'
+          instructions: 'Click the "Configure qBraid" button to set your qBraid API Key and target quantum device, or switch to one of the three local simulators.'
         },
         codeSnippet: this.generateCode(circuitData, shots),
         rawOutput: null

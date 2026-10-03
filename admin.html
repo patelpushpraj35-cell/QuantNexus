@@ -16,7 +16,9 @@
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
-      <span class="brand-icon-sm">🛡️</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#fbbf24">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
       <div style="display:flex;flex-direction:column;line-height:1.2;">
         <span class="brand-name-sm">QuantNexus</span>
         <span style="font-size:0.62rem;color:#fbbf24;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Admin Portal</span>
@@ -24,30 +26,30 @@
     </div>
     <nav class="sidebar-nav">
       <a href="javascript:void(0)" class="nav-item active" id="navAdminUsers" onclick="switchAdminTab('users'); return false;">
-        <span class="nav-icon">👥</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         <span>User Management</span>
       </a>
       <a href="javascript:void(0)" class="nav-item" id="navAdminBackends" onclick="switchAdminTab('backends'); return false;">
-        <span class="nav-icon">🚀</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
         <span>Quantum Backends</span>
       </a>
       <a href="javascript:void(0)" class="nav-item" id="navAdminSettings" onclick="switchAdminTab('settings'); return false;">
-        <span class="nav-icon">⚙️</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         <span>System Settings</span>
       </a>
       <a href="javascript:void(0)" class="nav-item" id="navAdminLogs" onclick="switchAdminTab('logs'); return false;">
-        <span class="nav-icon">📜</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         <span>Audit Logs</span>
       </a>
 
       <div style="height:1px;background:rgba(255,255,255,0.08);margin:14px 10px;"></div>
 
       <a href="instructor.html" class="nav-item" id="navAdminInstructor" title="Open Instructor Command Center">
-        <span class="nav-icon">🎓</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         <span>Instructor Panel ↗</span>
       </a>
       <a href="dashboard.html" class="nav-item" id="navAdminStudentView" title="Preview Student Learning View">
-        <span class="nav-icon">👨‍🎓</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
         <span>View Student Portal ↗</span>
       </a>
     </nav>
@@ -61,7 +63,9 @@
           </div>
         </div>
       </div>
-      <button class="btn-logout" onclick="handleLogout()" title="Logout">⏻</button>
+      <button class="btn-logout" onclick="handleLogout()" title="Logout">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
     </div>
   </aside>
 
@@ -70,15 +74,19 @@
 
     <!-- Topbar -->
     <header class="topbar">
-      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
-      <div class="topbar-title">🛡️ QuantNexus Platform Administration</div>
+      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="topbar-title">Platform Administration</div>
       <div class="topbar-right">
         <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
-          <span class="theme-icon">🌙</span>
+          <span class="theme-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
           <span class="theme-label">Dark</span>
         </button>
         <span class="backend-status-indicator ready">● System Health: 100% Operational</span>
-        <button class="btn-secondary" onclick="exportFullSystemBackup()" title="Download full platform state JSON">💾 Backup Data</button>
+        <button class="btn-secondary" onclick="exportFullSystemBackup()" title="Download full platform state JSON">Backup Data</button>
       </div>
     </header>
 
@@ -100,28 +108,36 @@
       <!-- System KPI Metrics -->
       <div class="stats-row admin-stats-row">
         <div class="stat-card">
-          <div class="stat-icon">👥</div>
+          <div class="stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
           <div class="stat-info">
             <div class="stat-value" id="adminKpiUsers">8</div>
             <div class="stat-label">Registered Accounts</div>
           </div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">⚡</div>
+          <div class="stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
           <div class="stat-info">
             <div class="stat-value" id="adminKpiSims">1,428</div>
             <div class="stat-label">Circuits Simulated</div>
           </div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">🚀</div>
+          <div class="stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
           <div class="stat-info">
             <div class="stat-value" id="adminKpiBackends">4 / 4</div>
             <div class="stat-label">Backends Online</div>
           </div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon">⏱️</div>
+          <div class="stat-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 10"/></svg>
+          </div>
           <div class="stat-info">
             <div class="stat-value" id="adminKpiLatency">12.8 ms</div>
             <div class="stat-label">Avg. Sim Latency</div>
@@ -132,16 +148,16 @@
       <!-- Admin Tabs Navigation -->
       <div class="inst-tabs-bar">
         <button class="inst-tab-btn active" id="tabAdminUsers" onclick="switchAdminTab('users')">
-          <span>👥 User & Role Management</span>
+          <span>User & Role Management</span>
         </button>
         <button class="inst-tab-btn" id="tabAdminBackends" onclick="switchAdminTab('backends')">
-          <span>🚀 Quantum Backends Telemetry</span>
+          <span>Quantum Backends Telemetry</span>
         </button>
         <button class="inst-tab-btn" id="tabAdminSettings" onclick="switchAdminTab('settings')">
-          <span>⚙️ System Configuration</span>
+          <span>System Configuration</span>
         </button>
         <button class="inst-tab-btn" id="tabAdminLogs" onclick="switchAdminTab('logs')">
-          <span>📜 Audit Event Logs</span>
+          <span>Audit Event Logs</span>
         </button>
       </div>
 
@@ -193,7 +209,7 @@
               <h3>Quantum Simulation Engine Telemetry</h3>
               <p class="panel-subtext">Active execution adapters and hardware gateway configurations.</p>
             </div>
-            <button class="btn-secondary" onclick="pingAllBackends()">🔄 Re-check Backends</button>
+            <button class="btn-secondary" onclick="pingAllBackends()">Re-check Backends</button>
           </div>
 
           <div class="backends-telemetry-grid" id="backendsTelemetryGrid">
@@ -201,7 +217,7 @@
           </div>
 
           <div class="backend-global-config-card">
-            <h4>⚙️ Global Simulation Engine Policies</h4>
+            <h4>Global Simulation Engine Policies</h4>
             <div class="config-form-grid">
               <div class="form-group">
                 <label for="adminMaxShots">Max Allowed Shots:</label>
@@ -226,7 +242,7 @@
       <!-- TAB 3: System Settings & Maintenance -->
       <section class="admin-tab-panel hidden" id="panelAdminSettings">
         <div class="panel-card">
-          <h3>⚙️ Platform Configuration</h3>
+          <h3>Platform Configuration</h3>
           <p class="panel-subtext">Platform-wide parameters for SIH 26140 online learning environment.</p>
 
           <div class="settings-form-layout">
@@ -250,12 +266,12 @@
 
           <hr class="admin-divider" />
 
-          <h3>🗄️ Database & Storage Maintenance</h3>
+          <h3>Database & Storage Maintenance</h3>
           <p class="panel-subtext">Reset demo states or backup full JSON state.</p>
           <div class="maintenance-actions-row">
-            <button class="btn-secondary" onclick="exportFullSystemBackup()">📥 Download Complete Backup JSON</button>
-            <button class="btn-secondary" onclick="resetToFactoryDataset()">↺ Restore Factory Demo Data</button>
-            <button class="btn-danger" onclick="clearPlatformLocalStorage()">⚠️ Purge Local Storage Data</button>
+            <button class="btn-secondary" onclick="exportFullSystemBackup()">Download Complete Backup JSON</button>
+            <button class="btn-secondary" onclick="resetToFactoryDataset()">Restore Factory Demo Data</button>
+            <button class="btn-danger" onclick="clearPlatformLocalStorage()">Purge Local Storage Data</button>
           </div>
         </div>
       </section>

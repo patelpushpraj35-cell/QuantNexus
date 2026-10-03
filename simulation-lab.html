@@ -17,40 +17,50 @@
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
-      <span class="brand-icon-sm">⚛️</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--primary-light)">
+        <circle cx="12" cy="12" r="3"></circle>
+        <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"></ellipse>
+        <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-30 12 12)"></ellipse>
+      </svg>
       <span class="brand-name-sm">QuantNexus</span>
     </div>
     <nav class="sidebar-nav">
       <a href="dashboard.html" class="nav-item" id="navDashboard">
-        <span class="nav-icon">🏠</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
         <span>Dashboard</span>
       </a>
       <a href="chapters.html" class="nav-item" id="navChapters">
-        <span class="nav-icon">📚</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         <span>Chapters</span>
       </a>
       <a href="circuit-lab.html" class="nav-item" id="navLab">
-        <span class="nav-icon">⚡</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         <span>Circuit Lab</span>
       </a>
       <a href="simulation-lab.html" class="nav-item active" id="navSimLab">
-        <span class="nav-icon">🧪</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.35 19.26A2 2 0 0 0 6.07 22h11.86a2 2 0 0 0 1.72-2.74L14 9.31V2"/></svg>
         <span>Simulation Lab</span>
       </a>
       <a href="coding-challenges.html" class="nav-item" id="navChallenges">
-        <span class="nav-icon">🏆</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         <span>Challenges</span>
+      </a>
+      <a href="help-desk.html" class="nav-item" id="navHelpDesk">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>Help Desk</span>
       </a>
     </nav>
     <div class="sidebar-footer">
       <div class="user-info" id="sidebarUser">
-        <div class="user-avatar" id="sidebarAvatar">?</div>
+        <div class="user-avatar" id="sidebarAvatar">S</div>
         <div class="user-details">
           <div class="user-name" id="sidebarName">Loading...</div>
           <div class="user-role">Student</div>
         </div>
       </div>
-      <button class="btn-logout" onclick="handleLogout()" title="Logout">⏻</button>
+      <button class="btn-logout" onclick="handleLogout()" title="Logout">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
     </div>
   </aside>
 
@@ -59,15 +69,19 @@
 
     <!-- Topbar -->
     <header class="topbar">
-      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
-      <div class="topbar-title">🧪 Quantum Simulation Lab</div>
+      <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="topbar-title">Quantum Simulation Lab</div>
       <div class="topbar-right">
         <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Switch theme">
-          <span class="theme-icon">🌙</span>
+          <span class="theme-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
           <span class="theme-label">Dark</span>
         </button>
         <span class="badge-sih">Objective 3: Multi-Backend Simulation</span>
-        <a href="circuit-lab.html" class="btn-back">⚡ Circuit Lab</a>
+        <a href="circuit-lab.html" class="btn-back">Circuit Lab</a>
       </div>
     </header>
 
@@ -81,10 +95,10 @@
         </div>
         <div class="sim-header-actions">
           <button class="btn-secondary" onclick="openQbraidModal()" title="Configure qBraid Quantum Cloud API credentials">
-            <span>⚙️ qBraid Settings</span>
+            <span>qBraid Settings</span>
           </button>
           <a href="circuit-lab.html" class="btn-secondary" title="Open the Graphical Builder to design new circuits">
-            <span>✏️ Edit in Circuit Lab</span>
+            <span>Edit in Circuit Lab</span>
           </a>
         </div>
       </div>
@@ -93,7 +107,7 @@
       <div class="sim-circuit-card">
         <div class="sim-circuit-header">
           <div class="sim-circuit-title-row">
-            <span class="sim-badge" id="circuitSourceBadge">⚡ Circuit from Lab</span>
+            <span class="sim-badge" id="circuitSourceBadge">Circuit from Lab</span>
             <h3 id="currentCircuitTitle">Active Circuit: 2-Qubit Bell State (|Φ⁺⟩)</h3>
           </div>
           <div class="sim-circuit-meta">
@@ -150,11 +164,10 @@
 
         <div class="sim-buttons-group">
           <button class="btn-primary btn-run-sim" id="btnRunSim" onclick="executeSelectedBackend()" title="Run circuit on selected backend">
-            <span class="btn-icon">▶</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             <span>Run Simulation</span>
           </button>
           <button class="btn-compare-all" id="btnCompareAll" onclick="executeCompareAll()" title="Run across Qiskit Aer, PennyLane, and Cirq and compare distributions">
-            <span class="btn-icon">⚡</span>
             <span>Compare Backends</span>
           </button>
         </div>
@@ -162,7 +175,7 @@
 
       <!-- Execution Status & Notification Bar -->
       <div id="simNotificationBar" class="sim-notification-bar hidden">
-        <span id="simNotificationIcon">ℹ️</span>
+        <span id="simNotificationIcon">●</span>
         <span id="simNotificationText">Simulation running...</span>
       </div>
 
@@ -198,12 +211,12 @@
         <!-- Unavailable / Error Callout Banner (shown if backend unavailable, e.g. unconfigured qBraid) -->
         <div id="resErrorCallout" class="error-callout-card hidden">
           <div class="error-callout-header">
-            <span class="error-icon">⚠️</span>
+            <span class="error-icon">!</span>
             <h4 id="errorCalloutTitle">Backend Unavailable</h4>
           </div>
           <p id="errorCalloutMessage"></p>
           <div class="error-callout-actions">
-            <button class="btn-secondary" onclick="openQbraidModal()">⚙️ Configure qBraid Credentials</button>
+            <button class="btn-secondary" onclick="openQbraidModal()">Configure qBraid Credentials</button>
             <button class="btn-primary" onclick="switchBackend('qiskit_aer')">Switch to Qiskit Aer</button>
           </div>
         </div>
@@ -214,7 +227,7 @@
           <!-- Histogram Panel -->
           <div class="panel-card histogram-panel">
             <div class="panel-header">
-              <h3>📊 Measurement Probability Histogram</h3>
+              <h3>Measurement Probability Histogram</h3>
               <span class="panel-tag" id="histShotsTag">1,024 Shots</span>
             </div>
             <div class="histogram-chart-area" id="simHistogramChart">
@@ -229,7 +242,7 @@
           <!-- Measurement Breakdown Table & Details -->
           <div class="panel-card counts-panel">
             <div class="panel-header">
-              <h3>📋 Measurement Counts & Probabilities</h3>
+              <h3>Measurement Counts & Probabilities</h3>
               <span class="panel-tag">Common Format</span>
             </div>
             <div class="counts-table-wrapper">
@@ -263,11 +276,11 @@
         <div class="panel-card code-export-panel">
           <div class="panel-header">
             <div class="code-header-left">
-              <h3>💻 Native Framework Code Representation</h3>
+              <h3>Native Framework Code Representation</h3>
               <span class="panel-tag" id="codeLanguageTag">Qiskit Python (1.x)</span>
             </div>
             <button class="btn-secondary btn-copy" onclick="copyBackendCode()" id="btnCopyCode">
-              <span>📋 Copy Code</span>
+              <span>Copy Code</span>
             </button>
           </div>
           <div class="sim-code-wrapper">
@@ -283,7 +296,7 @@
         <!-- Comparison Header Banner -->
         <div class="compare-banner">
           <div class="compare-banner-text">
-            <h3>⚡ Side-by-Side Multi-Backend Distribution Comparison</h3>
+            <h3>Side-by-Side Multi-Backend Distribution Comparison</h3>
             <p>The exact same circuit evaluated across <strong>Qiskit Aer</strong>, <strong>PennyLane</strong>, and <strong>Cirq</strong>. Observe how different simulator engines produce consistent physical outcomes with slight shot noise differences and framework-specific bit ordering conventions.</p>
           </div>
           <div class="compare-stat-badge">
@@ -295,7 +308,7 @@
         <!-- Grouped Comparative Histogram -->
         <div class="panel-card compare-histogram-card">
           <div class="panel-header">
-            <h3>📊 Grouped Comparative Histogram</h3>
+            <h3>Grouped Comparative Histogram</h3>
             <div class="compare-legend">
               <span class="legend-item"><span class="legend-dot" style="background: #8b5cf6;"></span> Qiskit Aer (IBM)</span>
               <span class="legend-item"><span class="legend-dot" style="background: #06b6d4;"></span> PennyLane (Xanadu)</span>
@@ -310,7 +323,7 @@
         <!-- Comparative Metrics Table -->
         <div class="panel-card compare-table-card">
           <div class="panel-header">
-            <h3>🔍 Measurement & Metric Breakdown by Backend</h3>
+            <h3>Measurement & Metric Breakdown by Backend</h3>
             <span class="panel-tag">Normalized Physical Basis States</span>
           </div>
           <div class="counts-table-wrapper">
@@ -335,11 +348,11 @@
         <!-- Educational Insight Cards -->
         <div class="compare-insights-grid">
           <div class="insight-card">
-            <h4>💡 Key Takeaway: Bit-Ordering Conventions</h4>
+            <h4>Key Takeaway: Bit-Ordering Conventions</h4>
             <p><strong>IBM Qiskit</strong> lists classical measurement results in <em>little-endian</em> order (qubit 0 is the least significant bit on the far right: <code>|qN-1...q0⟩</code>). In contrast, <strong>Google Cirq</strong> and <strong>Xanadu PennyLane</strong> list results in <em>big-endian</em> order (wire 0 is on the left: <code>|q0...qN-1⟩</code>). QuantNexus standardizes both views so you can see that the physical quantum state is identical!</p>
           </div>
           <div class="insight-card">
-            <h4>🎲 Finite Shot Sampling Variance</h4>
+            <h4>Finite Shot Sampling Variance</h4>
             <p>Because quantum measurement projects a superposition into discrete classical outcomes, running with finite shots introduces statistical shot noise that scales as $1/\sqrt{N}$. Higher shots (e.g. 4,096) converge closer to the exact theoretical probability distribution.</p>
           </div>
         </div>
@@ -347,7 +360,7 @@
         <!-- Code Comparison Tabs -->
         <div class="panel-card">
           <div class="panel-header">
-            <h3>📑 Framework Implementation Comparison</h3>
+            <h3>Framework Implementation Comparison</h3>
             <div class="code-tabs">
               <button class="code-tab active" onclick="switchCompareCodeTab('qiskit_aer')">Qiskit (IBM)</button>
               <button class="code-tab" onclick="switchCompareCodeTab('pennylane')">PennyLane (Xanadu)</button>
@@ -373,7 +386,7 @@
   <div class="modal-overlay hidden" id="qbraidModal">
     <div class="sim-modal-content">
       <div class="sim-modal-header">
-        <h3>⚙️ qBraid Quantum Cloud Configuration</h3>
+        <h3>qBraid Quantum Cloud Configuration</h3>
         <button class="btn-close-modal" onclick="closeQbraidModal()">✕</button>
       </div>
       <div class="sim-modal-body">
@@ -390,7 +403,7 @@
           <label for="qbraidApiKeyInput">qBraid API Key:</label>
           <div class="password-input-wrap">
             <input type="password" id="qbraidApiKeyInput" placeholder="Enter your qBraid API Key (e.g., qb_live_...)" />
-            <button type="button" class="btn-toggle-eye" onclick="toggleApiKeyVisibility()" id="btnEye">👁️</button>
+            <button type="button" class="btn-toggle-eye" onclick="toggleApiKeyVisibility()" id="btnEye">Show</button>
           </div>
           <small class="form-hint">Stored safely in your local browser storage. Never transmitted to third parties.</small>
         </div>
@@ -406,7 +419,7 @@
         </div>
 
         <div class="qbraid-info-note">
-          ℹ️ <strong>Honest Adapter Policy:</strong> QuantNexus does not generate fake cloud results when credentials are unconfigured. To test quantum circuits without an API key, use the built-in local backends (<strong>Qiskit Aer</strong>, <strong>PennyLane</strong>, and <strong>Cirq</strong>).
+          <strong>Honest Adapter Policy:</strong> QuantNexus does not generate fake cloud results when credentials are unconfigured. To test quantum circuits without an API key, use the built-in local backends (<strong>Qiskit Aer</strong>, <strong>PennyLane</strong>, and <strong>Cirq</strong>).
         </div>
       </div>
       <div class="sim-modal-footer">
