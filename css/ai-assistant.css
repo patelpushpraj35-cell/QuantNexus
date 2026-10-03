@@ -631,6 +631,75 @@ body.modal-open .ai-chat-panel {
   background: rgba(0, 0, 0, 0.2);
 }
 
+/* ── Direct Contact & Helpline Box ── */
+.ai-contact-box {
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.28);
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+
+.ai-contact-box h5 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ai-cyan);
+  margin-bottom: 3px;
+}
+
+.ai-contact-box p {
+  font-size: 0.72rem;
+  color: var(--ai-text-dim);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.ai-contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ai-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ai-text);
+  text-decoration: none;
+  padding: 6px 9px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease;
+  word-break: break-all;
+}
+
+.ai-contact-row:hover {
+  background: rgba(6, 182, 212, 0.16);
+  border-color: rgba(6, 182, 212, 0.45);
+  color: #ffffff;
+}
+
+.ai-contact-row svg {
+  flex-shrink: 0;
+  color: var(--ai-cyan);
+}
+
+.ai-contact-hours {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.67rem;
+  color: var(--ai-text-muted);
+  margin-top: 7px;
+  padding-left: 2px;
+}
+
+.ai-contact-hours svg {
+  flex-shrink: 0;
+}
+
 .ai-ticket-box {
   background: rgba(124, 58, 237, 0.08);
   border: 1px solid rgba(124, 58, 237, 0.25);
@@ -821,3 +890,29 @@ body.modal-open .ai-chat-panel {
   border-color: #cbd5e1;
   color: #0f172a;
 }
+
+[data-theme="light"] .ai-contact-box {
+  background: #f0fdfa;
+  border-color: #99f6e4;
+}
+
+[data-theme="light"] .ai-contact-box h5 {
+  color: #0d9488;
+}
+
+[data-theme="light"] .ai-contact-box p {
+  color: #64748b;
+}
+
+[data-theme="light"] .ai-contact-row {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #1e293b;
+}
+
+[data-theme="light"] .ai-contact-row:hover {
+  background: #ccfbf1;
+  border-color: #5eead4;
+  color: #0f766e;
+}
+
