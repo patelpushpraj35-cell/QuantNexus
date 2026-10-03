@@ -454,9 +454,13 @@ img { max-width: 100%; }
   flex: 1;
   overflow-y: auto;
   padding: 28px;
+  padding-bottom: 110px;
   display: flex;
   flex-direction: column;
   gap: 28px;
+}
+.page-body > * {
+  flex-shrink: 0;
 }
 .page-body::-webkit-scrollbar { width: 6px; }
 .page-body::-webkit-scrollbar-track { background: transparent; }
@@ -1137,7 +1141,7 @@ img { max-width: 100%; }
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.75);
   backdrop-filter: blur(8px);
-  z-index: 1000;
+  z-index: 100000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3407,7 +3411,7 @@ img { max-width: 100%; }
   }
   .sidebar.open { transform: translateX(0); box-shadow: 0 0 0 100vw rgba(0,0,0,0.5); }
   .sidebar-toggle { display: flex; }
-  .page-body { padding: 20px 16px; gap: 20px; }
+  .page-body { padding: 20px 16px 90px; gap: 20px; }
   .welcome-banner { flex-direction: column; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .chapters-grid { grid-template-columns: 1fr; }
@@ -3477,6 +3481,9 @@ body[data-user-role="instructor"] .admin-only {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  min-height: fit-content;
+  flex-shrink: 0;
+  width: 100%;
 }
 .chapter-video-card::before {
   content: '';
@@ -3572,12 +3579,14 @@ body[data-user-role="instructor"] .admin-only {
 
 .cv-player-wrapper {
   display: block;
+  width: 100%;
   transition: all 0.3s ease;
 }
 .cv-iframe-container {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+  min-height: 280px;
   background: #000;
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -3590,6 +3599,7 @@ body[data-user-role="instructor"] .admin-only {
   width: 100%;
   height: 100%;
   border: none;
+  display: block;
 }
 
 .cv-info-bar {
@@ -3601,6 +3611,7 @@ body[data-user-role="instructor"] .admin-only {
   padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   flex-wrap: wrap;
+  padding-right: 80px;
 }
 .cv-info-text {
   flex: 1;
@@ -3749,6 +3760,7 @@ body[data-user-role="instructor"] .admin-only {
 .vm-player-box {
   width: 100%;
   aspect-ratio: 16 / 9;
+  min-height: 280px;
   background: #000;
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -3757,9 +3769,12 @@ body[data-user-role="instructor"] .admin-only {
   position: relative;
 }
 .vm-player-box iframe {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   border: none;
+  display: block;
 }
 .vm-footer {
   display: flex;
@@ -4100,6 +4115,27 @@ body[data-user-role="instructor"] .admin-only {
   border: 1px solid rgba(109, 40, 217, 0.25);
   box-shadow: 0 24px 64px rgba(15, 23, 42, 0.18);
   color: #0f172a;
+}
+[data-theme="light"] .chapter-video-card {
+  background: #ffffff;
+  border: 1px solid rgba(109, 40, 217, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .btn-cv-toggle {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+[data-theme="light"] .btn-cv-toggle:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+[data-theme="light"] .cv-duration {
+  background: #f1f5f9;
+  color: #475569;
+}
+[data-theme="light"] .cv-info-bar {
+  border-top-color: rgba(15, 23, 42, 0.08);
 }
 [data-theme="light"] .quiz-option {
   background: #f8fafc;
